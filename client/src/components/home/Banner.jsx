@@ -34,7 +34,7 @@ const Banner = () => {
       showDots={false}
       slidesToSlide={1}
       autoPlay={true}
-      autoPlaySpeed={4000}
+      autoPlaySpeed={3500}
     >
       {bannerData.map((data) => (
         <Image src={data.url} alt="banner" />
