@@ -1,11 +1,14 @@
 import axios from 'axios';
-const URL = "https://localhost:8000/"
-export const authenticatesSignup = async (userData)=>{
+const URL = "http://localhost:8000";
+
+
+export const authenticateSignup = async (userData)=>{
     try{
-        return await axios.post(`${URL}signup`, userData);
+        console.log(userData);
+        return await axios.post(`${URL}/signup`, userData);
     }catch(error){
         console.log(error);
     }
 };
 
-export default authenticatesSignup;
+export default authenticateSignup;

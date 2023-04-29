@@ -19,7 +19,7 @@ export const bannerData = [
 
 export const dealData = [
     { 
-        id: 'product1',
+        id: 'product0',
         url: 'https://rukminim1.flixcart.com/image/200/200/khf63680/cases-covers/back-cover/d/7/g/spigen-acs02256-original-imafxfgbffqaugur.jpeg?q=70', 
         detailUrl: '',
         title: {

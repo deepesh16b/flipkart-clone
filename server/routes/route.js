@@ -1,6 +1,10 @@
-import { Router } from "express";
-import { userSignup } from "../controller/user-controller";
 
-Router.post("/signup", (req, res) => userSignup);
+import express from 'express';
+import { userSignup } from "../controller/user-controller.js";
 
-export default Router;
+const router = express.Router();
+
+console.log("before mogodb req. , inside route");
+router.post("/signup", () => userSignup);
+
+export default router;

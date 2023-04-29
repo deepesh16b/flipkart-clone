@@ -2,14 +2,15 @@
 import './App.css';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
+import LoginProvider from './contexts/LoginProvider';
 
 
 function App() {
   return (
-    <div className="App">
+    <LoginProvider >
       <Header/>
       <Home/>
-    </div>
+    </LoginProvider>
   );
 }
 

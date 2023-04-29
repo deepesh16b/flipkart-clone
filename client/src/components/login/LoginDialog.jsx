@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import authenticatesSignup from "../../services/api";
+import { LoginContext } from "../../contexts/LoginProvider";
 import {
   Box,
   Button,
@@ -58,6 +59,7 @@ const LoginButton = styled(Button)`
 `;
 
 const LoginDialog = ({ loginOpen, setLoginOpen }) => {
+  const { setAccount } = useContext(LoginContext);
   const userDataInitialValues = {
     name: "",
     email: "",
@@ -88,11 +90,15 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
     setIsNewUser(user.existing);
   };
   const onSignup = async () => {
-    let response =await authenticatesSignup(newUserData);
-    if(!response) return;
+    let response = await authenticatesSignup(newUserData);
+    if (!response) {
+      console.log("null response login dialog ");
+      return;
+    }
+    console.log("got response in login dialog");
     handleDialogOnClose();
-
-  }
+    setAccount(newUserData.name);
+  };
   return (
     <Dialog
       open={loginOpen}
@@ -141,7 +147,12 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
               onChange={(e) => onChangeUserData(e)}
             ></TextField>
 
-            <LoginButton style={{ margin: "20px 0" }} onClick={() => onSignup()}>SignUp</LoginButton>
+            <LoginButton
+              style={{ margin: "20px 0" }}
+              onClick={() => onSignup()}
+            >
+              SignUp
+            </LoginButton>
 
             <OtpButton
               name="existing login page btn"
@@ -182,7 +193,7 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
             </Typography>
             <LoginButton>Login</LoginButton>
             <Typography
-              style={{ textAlign: "center", padding: "10px 0", color: "grey" }}
+              style={{ textAlign: "center", padding: "8px 0", color: "grey" }}
             >
               or
             </Typography>

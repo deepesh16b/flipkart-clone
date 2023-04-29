@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Box, Button, Typography, styled } from "@mui/material";
 import { ShoppingCart } from "@mui/icons-material";
+import { LoginContext } from "../../contexts/LoginProvider.jsx";
+import Profile from "./Profile.jsx";
 import LoginDialog from "../login/LoginDialog.jsx";
 
 const Wrapper = styled(Box)`
+
   display: flex;
   margin: 0 3% 0 auto;
   align-items: center;
@@ -16,6 +19,7 @@ const Wrapper = styled(Box)`
     font-size: 15px;
     font-weight: 600;
   }
+  
 `;
 const CartBox = styled(Box)`
   display: flex;
@@ -39,10 +43,17 @@ const LoginButton = styled(Button)`
 
 const CustomIcons = () => {
   const [loginOpen, setLoginOpen] = useState(false);
-
+  const { account } = useContext(LoginContext);
   return (
     <Wrapper>
-      <LoginButton variant="contained" onClick={()=> setLoginOpen(true)}>Login</LoginButton>
+      {account ? (
+        <Profile account={account} />
+      ) : (
+        <LoginButton variant="contained" onClick={() => setLoginOpen(true)}>
+          Login
+        </LoginButton>
+      )}
+
       <Typography style={{ marginTop: 3, width: 135 }}>
         Become a Seller
       </Typography>
@@ -51,7 +62,7 @@ const CustomIcons = () => {
         <ShoppingCart />
         <Typography>Cart</Typography>
       </CartBox>
-      <LoginDialog loginOpen={loginOpen} setLoginOpen={setLoginOpen}/>
+      <LoginDialog loginOpen={loginOpen} setLoginOpen={setLoginOpen} />
     </Wrapper>
   );
 };
