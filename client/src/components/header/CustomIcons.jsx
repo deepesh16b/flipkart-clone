@@ -43,11 +43,11 @@ const LoginButton = styled(Button)`
 
 const CustomIcons = () => {
   const [loginOpen, setLoginOpen] = useState(false);
-  const { account } = useContext(LoginContext);
+  const { account, setAccount } = useContext(LoginContext);
   return (
     <Wrapper>
       {account ? (
-        <Profile account={account} />
+        <Profile account={account} setAccount={setAccount}/>
       ) : (
         <LoginButton variant="contained" onClick={() => setLoginOpen(true)}>
           Login

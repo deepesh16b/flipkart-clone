@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import authenticatesSignup from "../../services/api";
+import {authenticateSignup, authenticateLogin} from "../../services/api";
 import { LoginContext } from "../../contexts/LoginProvider";
 import {
   Box,
@@ -60,13 +60,19 @@ const LoginButton = styled(Button)`
 
 const LoginDialog = ({ loginOpen, setLoginOpen }) => {
   const { setAccount } = useContext(LoginContext);
-  const userDataInitialValues = {
+  const signUpInitialValues = {
     name: "",
     email: "",
     mobile: "",
     password: "",
   };
-  const [newUserData, setNewUserData] = useState(userDataInitialValues);
+  const loginInitialValues = {
+    email: "",
+    password: "",
+  };
+  const [error, setError] = useState(false);
+  const [loginUserData, setLoginUserData ] = useState(loginInitialValues);
+  const [newUserData, setNewUserData] = useState(signUpInitialValues);
   const user = {
     new: {
       name: "new",
@@ -88,9 +94,10 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
   const handleDialogOnClose = () => {
     setLoginOpen(false);
     setIsNewUser(user.existing);
+    setError(false);
   };
   const onSignup = async () => {
-    let response = await authenticatesSignup(newUserData);
+    let response = await authenticateSignup(newUserData);
     if (!response) {
       console.log("null response login dialog ");
       return;
@@ -99,6 +106,28 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
     handleDialogOnClose();
     setAccount(newUserData.name);
   };
+  const onValueChange = (e)=>{
+    setLoginUserData({...loginUserData, [e.target.name] : e.target.value})
+  }
+  const loginUser = async ()=>{
+    let response = await authenticateLogin(newUserData);
+    if (response.status === 200) {
+      handleDialogOnClose();
+      setAccount(response.data.data.name);
+    }
+    else{
+      setError(true);
+      console.log("no user");
+    }
+    
+  }
+  const Error = styled(Typography)`
+  color : red;
+  font-size : 11px;
+  font-weight : 500;
+  line-height : 0;
+  margin : 11px 0 18px 0;
+  `;
   return (
     <Dialog
       open={loginOpen}
@@ -177,13 +206,18 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
           <Wrapper>
             <TextField
               variant="standard"
-              label="Enter Email/Mobile number"
+              label="Enter Email"
               style={{ width: "100%", marginBottom: "12px" }}
+              name="email"
+              onChange={(e) => onValueChange(e)}
             ></TextField>
+            {error && <Error >* Please enter valid email or password</Error>}
             <TextField
               style={{ width: "100%", marginBottom: "12px" }}
               variant="standard"
               label="Enter password"
+              name="password"
+              onChange={(e) => onValueChange(e)}
             ></TextField>
             <Typography
               style={{ fontSize: 12, color: "grey", margin: "20px 0" }}
@@ -191,7 +225,7 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
               By continuing, you agree to Flipkart's <Span>Terms of Use</Span>{" "}
               and <Span>Privacy Policy.</Span>
             </Typography>
-            <LoginButton>Login</LoginButton>
+            <LoginButton onClick={loginUser}>Login</LoginButton>
             <Typography
               style={{ textAlign: "center", padding: "8px 0", color: "grey" }}
             >

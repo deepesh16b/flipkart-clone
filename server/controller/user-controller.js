@@ -2,15 +2,15 @@ import User from '../model/user-schema.js';
 
 export const userLogIn = async (request, response) => {
     try {
-        let user = await User.findOne({ username: request.body.username, password: request.body.password });
+        let user = await User.findOne({ email: request.body.email, password: request.body.password });
         if(user) {
-            return response.status(200).json(`${request.body.username} login successfull`);
+            return response.status(200).json({data : user});
         } else {
             return response.status(401).json('Invalid Login');
         }
 
     } catch (error) {
-        response.json('Error: ', error.message);        
+        response.status(500).json('Error: ', error.message);        
     }
 }
 

@@ -7,8 +7,16 @@ export const authenticateSignup = async (userData)=>{
         console.log(userData);
         return await axios.post(`${URL}/signup`, userData);
     }catch(error){
-        console.log(error);
+        console.log('error while calling signup api ',error);
     }
 };
 
-export default authenticateSignup;
+export const authenticateLogin = async (userData)=>{
+    try{
+        console.log(userData);
+        return await axios.post(`${URL}/login`, userData);
+    }catch(error){
+        console.log('error while calling login api ',error);
+        return error.response;
+    }
+};
