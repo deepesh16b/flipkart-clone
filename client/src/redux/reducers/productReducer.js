@@ -1,3 +1,3 @@
-export const getProductsReducer = ()=>{
+export const getProductsReducer = (state, action)=>{
     
 }
