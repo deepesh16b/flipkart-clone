@@ -59,7 +59,7 @@ function shuffleArray(arr) {
 export const Slide = ({ products, title, timer }) => {
   shuffleArray(products);
   const rendered = ({ hours, minutes, seconds }) => {
-    return (
+    return (  
       <Box variant="span">
         {hours} : {minutes} : {seconds} Left
       </Box>
