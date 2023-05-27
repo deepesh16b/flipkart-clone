@@ -3,6 +3,7 @@ import Carousel from "react-multi-carousel";
 import { bannerData } from "../constant/data";
 import { styled } from "@mui/material";
 import "react-multi-carousel/lib/styles.css";
+
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },

@@ -17,7 +17,7 @@ const password = process.env.USER_PASSWORD;
 
 Connection(user, password);
 
-app.listen(process.env.PORT || PORT, () => console.log(`Server started at port ${PORT}!`));
+app.listen(PORT || process.env.PORT , () => console.log(`Server started at port ${PORT}!`));
 
 DefaultData();
 
