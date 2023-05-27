@@ -8,6 +8,7 @@ const Component = styled(Box)`
   margin-top: 55px;
   padding: 12px 160px 12px 140px;
   justify-content: space-between;
+  text-align:center;
 `;
 const NavImg = styled("img")({
   height: "64px",

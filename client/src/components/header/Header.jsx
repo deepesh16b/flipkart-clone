@@ -27,8 +27,6 @@ const CustomButtonWrapper = styled(Box)`
   margin : 0 7% 0 auto 
 `;
 
-
-
   // ----------------------RETURN-------------------------------
   return (
     <StyledHeader>
