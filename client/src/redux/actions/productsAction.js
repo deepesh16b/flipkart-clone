@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as actionTypes from '../constants/actionTypes';
-const url = 'http://localhost:8000';
+const url = 'http://localhost:8000' || 'https://flipkart-backend-lf47.onrender.com';
 // const url = 'https://flipkart-backend-lf47.onrender.com";
 
 // An action is just an object that contain type and value and etc.
