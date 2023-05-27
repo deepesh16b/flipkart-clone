@@ -1,5 +1,5 @@
 import axios from 'axios';
-const URL = "https://flipkart-backend-lf47.onrender.com";
+const URL = "http://localhost:8000" || "https://flipkart-backend-lf47.onrender.com";
 
 
 export const authenticateSignup = async (userData)=>{
