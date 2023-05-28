@@ -32,13 +32,13 @@ const Text = styled(Typography)(({ theme }) => ({
   fontSize: "14px",
   color: "#2a2a2a",
   [theme.breakpoints.down("md")]: {
-    fontSize: 12,
+    fontSize: 10,
   },
 }));
 const NavImg = styled("img")(({ theme }) => ({
   height: "64px",
   [theme.breakpoints.down("md")]: {
-    height: "55px",
+    height: "45px",
   },
 }));
 

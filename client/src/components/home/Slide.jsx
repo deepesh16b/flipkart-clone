@@ -11,11 +11,11 @@ const responsive = {
   },
   tablet: {
     breakpoint: { max: 1024, min: 468 },
-    items: 2,
+    items: 3,
   },
   mobile: {
     breakpoint: { max: 468, min: 0 },
-    items: 1,
+    items: 2,
   },
 };
 const Component = styled(Box)`
@@ -46,11 +46,14 @@ const ViewAllButton = styled(Button)`
   border-radius: 2px;
   color: #ffffff;
 `;
-const Text = styled(Typography)`
-  margin-top: 5px;
-  font-size: 14px;
+const Text = styled(Typography)(({theme})=>({
+  marginTop: '5px',
+  fontSize: '14px',
   alignItems:'center',
-`;
+  [theme.breakpoints.down("md")]: {
+  fontSize: '11px',
+  },
+}))
 const Heading = styled(Typography)(({ theme }) => ({
   fontWeight: 500,
   fontSize: 21,
@@ -82,8 +85,10 @@ const TimerImg = styled("img")(({ theme }) => ({
 const Image = styled("img")(({theme})=>({
   width: "auto",
   height: 150,
+  maxWidth : 200,
   [theme.breakpoints.down("md")]: {
-    height: 100,
+    height: 95,
+    maxWidth : 130,
   },
 }))
 function shuffleArray(arr) {
@@ -119,7 +124,7 @@ export const Slide = ({ products, title, timer }) => {
       <Divider />
       <Carousel
         responsive={responsive}
-        infinite={true}
+        infinite={(window.screen.width > 800) ? true : false}
         centerMode={true}
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
