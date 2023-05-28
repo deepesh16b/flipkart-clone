@@ -36,8 +36,10 @@ const Banner = () => {
       dotListClass="custom-dot-list-style"
       itemClass="carousel-item-padding-40-px"
       draggable={false}
+      // {(window.screen.width() > "800px")}
+      removeArrowOnDeviceType={['tablet', 'mobile']}
       swipeable={false}
-      showDots={false}
+      showDots={(window.screen.width < 800) ? true : false}
       slidesToSlide={1}
       autoPlay={true}
       autoPlaySpeed={3500}
