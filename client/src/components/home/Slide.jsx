@@ -126,7 +126,7 @@ export const Slide = ({ products, title, timer }) => {
         containerClass="carousel-container"
         draggable={false}
         keyBoardControl={true}
-        swipeable={false}
+        swipeable={(window.screen.width < 800) ? true : false}
         removeArrowOnDeviceType={['tablet', 'mobile']}
         showDots={false}
         //   slidesToSlide={1}

@@ -38,7 +38,7 @@ const Banner = () => {
       draggable={false}
       // {(window.screen.width() > "800px")}
       removeArrowOnDeviceType={['tablet', 'mobile']}
-      swipeable={false}
+      swipeable={(window.screen.width < 800) ? true : false}
       showDots={(window.screen.width < 800) ? true : false}
       slidesToSlide={1}
       autoPlay={true}
