@@ -21,18 +21,23 @@ const responsive = {
 const Component = styled(Box)`
   margin-top: 10px;
   background: #ffffff;
+  alignItems:'center',
 `;
 const Deals = styled(Box)`
   padding: 15px 20px;
   display: flex;
   align-items: center;
 `;
-const Timer = styled(Box)`
-  display: flex;
-  margin-left: 10px;
-  color: #7f7f7f;
-  align-items: center;
-`;
+const Timer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  marginLeft: "10px",
+  color: "#7f7f7f",
+  alignItems: "center",
+  [theme.breakpoints.down("md")]: {
+    marginLeft: "0",
+  },
+}));
+
 const ViewAllButton = styled(Button)`
   background-color: #2874f0;
   margin-left: auto;
@@ -44,11 +49,43 @@ const ViewAllButton = styled(Button)`
 const Text = styled(Typography)`
   margin-top: 5px;
   font-size: 14px;
+  alignItems:'center',
 `;
-const Image = styled("img")({
+const Heading = styled(Typography)(({ theme }) => ({
+  fontWeight: 500,
+  fontSize: 21,
+  alignItems:'center',
+  marginRight: 20,
+  [theme.breakpoints.down("md")]: {
+    fontSize: "16px",
+    marginRight: 5,
+  },
+}));
+
+const CountdownText = styled(Box)(({ theme }) => ({
+  alignItems:'center',
+  [theme.breakpoints.down("md")]: {
+    fontSize: "12px",
+  },
+}));
+const TimerImg = styled("img")(({ theme }) => ({
+  width: 24,
+  marginRight: 10,
+  alignItems:'center',
+  [theme.breakpoints.down("md")]: {
+    width : 16,
+    marginRight : 5,
+    marginLeft : 5
+  },
+}));
+
+const Image = styled("img")(({theme})=>({
   width: "auto",
   height: 150,
-});
+  [theme.breakpoints.down("md")]: {
+    height: 100,
+  },
+}))
 function shuffleArray(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -59,10 +96,10 @@ function shuffleArray(arr) {
 export const Slide = ({ products, title, timer }) => {
   shuffleArray(products);
   const rendered = ({ hours, minutes, seconds }) => {
-    return (  
-      <Box variant="span">
+    return (
+      <CountdownText variant="span">
         {hours} : {minutes} : {seconds} Left
-      </Box>
+      </CountdownText>
     );
   };
   const timerURL =
@@ -70,12 +107,10 @@ export const Slide = ({ products, title, timer }) => {
   return (
     <Component>
       <Deals>
-        <Typography style={{ fontWeight: 500, fontSize: 21, marginRight: 20 }}>
-          {title}
-        </Typography>
+        <Heading style={{}}>{title}</Heading>
         {timer && (
           <Timer>
-            <img style={{ width: 24, marginRight: 10 }} src={timerURL} alt="" />
+            <TimerImg style={{}} src={timerURL} alt="" />
             <Countdown date={Date.now() + 5.04e7} renderer={rendered} />
           </Timer>
         )}
@@ -92,6 +127,7 @@ export const Slide = ({ products, title, timer }) => {
         draggable={false}
         keyBoardControl={true}
         swipeable={false}
+        removeArrowOnDeviceType={['tablet', 'mobile']}
         showDots={false}
         //   slidesToSlide={1}
         autoPlay={false}
