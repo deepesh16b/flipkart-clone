@@ -1,5 +1,5 @@
 import axios from 'axios';
-const URL = "https://flipkart-backend-lf47.onrender.com" || "http://localhost:8000" ;
+const URL = 'https://clever-underwear-toad.cyclic.app/' ||  "https://flipkart-backend-lf47.onrender.com" || "http://localhost:8000" ;
 
 
 export const authenticateSignup = async (userData)=>{
