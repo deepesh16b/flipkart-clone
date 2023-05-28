@@ -38,7 +38,7 @@ const Text = styled(Typography)(({ theme }) => ({
 const NavImg = styled("img")(({ theme }) => ({
   height: "64px",
   [theme.breakpoints.down("md")]: {
-    height: "45px",
+    height: "52px",
   },
 }));
 

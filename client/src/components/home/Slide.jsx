@@ -81,6 +81,15 @@ const TimerImg = styled("img")(({ theme }) => ({
     marginLeft : 5
   },
 }));
+const Item = styled(Box)(({ theme }) => ({
+  textAlign : "center",
+  padding: "25px 15px",
+  [theme.breakpoints.down("md")]: {
+    margin :"0 ",
+    padding: "25px 15px 15px 15px",
+    objectFit : 'contain'
+  },
+}));
 
 const Image = styled("img")(({theme})=>({
   width: "auto",
@@ -88,7 +97,7 @@ const Image = styled("img")(({theme})=>({
   maxWidth : 200,
   [theme.breakpoints.down("md")]: {
     height: 95,
-    maxWidth : 115,
+    objectFit : 'cover'
   },
 }))
 function shuffleArray(arr) {
@@ -139,7 +148,7 @@ export const Slide = ({ products, title, timer }) => {
         autoPlaySpeed={4000}
       >
         {products.map((product) => (
-          <Box textAlign="center" style={{ padding: "25px 15px" }}>
+          <Item >
             <Image src={product.url} alt="product" />
             <Text style={{ color: "#212121", fontWeight: 600 }}>
               {product.title.shortTitle}
@@ -148,7 +157,7 @@ export const Slide = ({ products, title, timer }) => {
             <Text style={{ color: "#212121", opacity: "0.6" }}>
               {product.tagline}
             </Text>
-          </Box>
+          </Item>
         ))}
       </Carousel>
     </Component>

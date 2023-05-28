@@ -143,24 +143,24 @@ export const productsData = [
   },
   {
     id: "product8",
-    url: "https://rukminim1.flixcart.com/image/200/200/l58iaa80/electric-cycle/i/y/f/-original-imagfykthgudy4qz.jpeg?q=70",
+    url: "https://rukminim1.flixcart.com/image/200/200/k59xci80/watch/t/p/9/premium-luxury-business-casual-trendy-water-resistant-original-imafnzmembfxdyhv.jpeg?q=70",
     detailUrl:
-      "https://rukminim1.flixcart.com/image/416/416/l58iaa80/electric-cycle/u/z/r/-original-imagfyktfefr3wbr.jpeg?q=70",
+      "https://rukminim1.flixcart.com/image/200/200/k59xci80/watch/t/p/9/premium-luxury-business-casual-trendy-water-resistant-original-imafnzmembfxdyhv.jpeg?q=70",
     title: {
-      shortTitle: "Electric Cycle",
+      shortTitle: "Watches",
       longTitle:
-        "Nuze i3 27.5 inches Single Speed Lithium-ion (Li-ion) Electric Cycle",
+        "TIMEWEAR Black Dial Green Silicone Strap Sports Analog-Digital Watch - For Men 1283GREENTW",
     },
     price: {
-      mrp: 28174,
-      cost: 38251,
-      discount: "36%",
+      mrp: 3499,
+      cost: 592,
+      discount: "83%",
     },
     quantity: 1,
     description:
-      "The Nuze i3 is a unisex Electric Bicycle which is ideal for city commutes and fitness rides. The i3 from Nuze has a lightweight frame, an 5.2Ah Integrated Battery and an EU certified BLDC Motor. The Nuze i3 has a range of 25-30km(Pedal Assist Mode) and 22-25km(Throttle Mode).",
-    discount: "Upto 40% Off",
-    tagline: "Nuze, Motovolt & more",
+      "TIMEWEAR ,TIMEWEAR Black Dial Green Silicone Strap Sports Analog-Digital Watch - For Men 1283GREENTW",
+    discount: "From 299",
+    tagline: "Best Selling",
   },
   {
     id: "product9",
@@ -205,13 +205,13 @@ export const productsData = [
   },
   {
     id: "product11",
-    url: "https://rukminim1.flixcart.com/image/416/416/xif0q/computer/8/l/c/raider-ge77hx-12uhs-205in-gaming-laptop-msi-original-imaghffpfubseq3n.jpeg?q=70",
+    url: "https://rukminim1.flixcart.com/image/312/312/xif0q/computer/v/k/d/14iau7-gaming-laptop-lenovo-original-imaghnq4zafgebtu.jpeg?q=70",
     detailUrl:
-      "https://rukminim1.flixcart.com/image/416/416/xif0q/computer/8/l/c/raider-ge77hx-12uhs-205in-gaming-laptop-msi-original-imaghffpfubseq3n.jpeg?q=70",
+      "https://rukminim1.flixcart.com/image/312/312/xif0q/computer/v/k/d/14iau7-gaming-laptop-lenovo-original-imaghnq4zafgebtu.jpeg?q=70",
     title: {
-      shortTitle: "MSI Gaming Laptop",
+      shortTitle: "Lenovo Gaming Laptop",
       longTitle:
-        "MSI Core i9 12th Gen - (32 GB/2 TB SSD/Windows 11 Home/16 GB Graphics/NVIDIA GeForce RTX 3080 Ti/120 Hz) Raider GE77HX 12UHS-205IN Gaming Laptop  (17.3 Inch, Titanium Dark Grey, 2.9 Kg)",
+        "Lenovo Core i9 12th Gen - (32 GB/2 TB SSD/Windows 11 Home/16 GB Graphics/NVIDIA GeForce RTX 3080 Ti/120 Hz) Raider GE77HX 12UHS-205IN Gaming Laptop  (17.3 Inch, Titanium Dark Grey, 2.9 Kg)",
     },
     price: {
       mrp: 481990,
@@ -220,7 +220,7 @@ export const productsData = [
     },
     quantity: 1,
     description:
-      "MSI Core i9 12th Gen - (32 GB/2 TB SSD/Windows 11 Home/16 GB Graphics/NVIDIA GeForce RTX 3080 Ti/120 Hz) Raider GE77HX 12UHS-205IN Gaming Laptop  (17.3 Inch, Titanium Dark Grey, 2.9 Kg)",
+      "Lenovo Core i9 12th Gen - (32 GB/2 TB SSD/Windows 11 Home/16 GB Graphics/NVIDIA GeForce RTX 3080 Ti/120 Hz) Raider GE77HX 12UHS-205IN Gaming Laptop  (17.3 Inch, Titanium Dark Grey, 2.9 Kg)",
     discount: "Minimum 30% Off",
     tagline: "Grab Now!",
   },
