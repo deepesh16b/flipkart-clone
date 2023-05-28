@@ -88,7 +88,7 @@ const Image = styled("img")(({theme})=>({
   maxWidth : 200,
   [theme.breakpoints.down("md")]: {
     height: 95,
-    maxWidth : 130,
+    maxWidth : 115,
   },
 }))
 function shuffleArray(arr) {
