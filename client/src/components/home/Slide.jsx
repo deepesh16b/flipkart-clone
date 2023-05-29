@@ -3,6 +3,7 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Countdown from "react-countdown";
+import { Link } from "react-router-dom";
 
 const responsive = {
   desktop: {
@@ -21,7 +22,7 @@ const responsive = {
 const Component = styled(Box)`
   margin-top: 10px;
   background: #ffffff;
-  alignItems:'center',
+  alignitems: "center";
 `;
 const Deals = styled(Box)`
   padding: 15px 20px;
@@ -46,18 +47,18 @@ const ViewAllButton = styled(Button)`
   border-radius: 2px;
   color: #ffffff;
 `;
-const Text = styled(Typography)(({theme})=>({
-  marginTop: '5px',
-  fontSize: '14px',
-  alignItems:'center',
+const Text = styled(Typography)(({ theme }) => ({
+  marginTop: "5px",
+  fontSize: "14px",
+  alignItems: "center",
   [theme.breakpoints.down("md")]: {
-  fontSize: '11px',
+    fontSize: "11px",
   },
-}))
+}));
 const Heading = styled(Typography)(({ theme }) => ({
   fontWeight: 500,
   fontSize: 21,
-  alignItems:'center',
+  alignItems: "center",
   marginRight: 20,
   [theme.breakpoints.down("md")]: {
     fontSize: "16px",
@@ -66,7 +67,7 @@ const Heading = styled(Typography)(({ theme }) => ({
 }));
 
 const CountdownText = styled(Box)(({ theme }) => ({
-  alignItems:'center',
+  alignItems: "center",
   [theme.breakpoints.down("md")]: {
     fontSize: "12px",
   },
@@ -74,32 +75,32 @@ const CountdownText = styled(Box)(({ theme }) => ({
 const TimerImg = styled("img")(({ theme }) => ({
   width: 24,
   marginRight: 10,
-  alignItems:'center',
+  alignItems: "center",
   [theme.breakpoints.down("md")]: {
-    width : 16,
-    marginRight : 5,
-    marginLeft : 5
+    width: 16,
+    marginRight: 5,
+    marginLeft: 5,
   },
 }));
 const Item = styled(Box)(({ theme }) => ({
-  textAlign : "center",
+  textAlign: "center",
   padding: "25px 15px",
   [theme.breakpoints.down("md")]: {
-    margin :"0 ",
+    margin: "0 ",
     padding: "25px 15px 15px 15px",
-    objectFit : 'contain'
+    objectFit: "contain",
   },
 }));
 
-const Image = styled("img")(({theme})=>({
+const Image = styled("img")(({ theme }) => ({
   width: "auto",
   height: 150,
-  maxWidth : 200,
+  maxWidth: 200,
   [theme.breakpoints.down("md")]: {
     height: 95,
-    objectFit : 'cover'
+    objectFit: "cover",
   },
-}))
+}));
 function shuffleArray(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -133,31 +134,33 @@ export const Slide = ({ products, title, timer }) => {
       <Divider />
       <Carousel
         responsive={responsive}
-        infinite={(window.screen.width > 800) ? true : false}
+        infinite={window.screen.width > 800 ? true : false}
         centerMode={true}
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
         containerClass="carousel-container"
         draggable={false}
         keyBoardControl={true}
-        swipeable={(window.screen.width < 800) ? true : false}
-        removeArrowOnDeviceType={['tablet', 'mobile']}
+        swipeable={window.screen.width < 800 ? true : false}
+        removeArrowOnDeviceType={["tablet", "mobile"]}
         showDots={false}
         //   slidesToSlide={1}
         autoPlay={false}
         autoPlaySpeed={4000}
       >
         {products.map((product) => (
-          <Item >
-            <Image src={product.url} alt="product" />
-            <Text style={{ color: "#212121", fontWeight: 600 }}>
-              {product.title.shortTitle}
-            </Text>
-            <Text style={{ color: "green" }}>{product.discount}</Text>
-            <Text style={{ color: "#212121", opacity: "0.6" }}>
-              {product.tagline}
-            </Text>
-          </Item>
+          <Link to={`product/${product.id}`} style={{textDecoration : 'none', color : 'inherit'}}>
+            <Item>
+              <Image src={product.url} alt="product" />
+              <Text style={{ color: "#212121", fontWeight: 600 }}>
+                {product.title.shortTitle}
+              </Text>
+              <Text style={{ color: "green" }}>{product.discount}</Text>
+              <Text style={{ color: "#212121", opacity: "0.6" }}>
+                {product.tagline}
+              </Text>
+            </Item>
+          </Link>
         ))}
       </Carousel>
     </Component>

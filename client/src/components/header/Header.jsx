@@ -2,6 +2,7 @@ import React from "react";
 import { Box, AppBar, Toolbar, styled, Typography } from "@mui/material";
 import Search from "./Search";
 import CustomIcons from "./CustomIcons";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const logoURL =
@@ -14,9 +15,11 @@ const Header = () => {
     height: 56px;
     box-shadow: none;
   `;
-  const StyledBox = styled(Box)`
+  const StyledBox = styled(Link)`
     margin-left: 11.8%;
     line-height: 0;
+    color : inherit;
+    text-decoration: none;
   `;
   const SubHeading = styled(Typography)`
     font-size: 10px;
@@ -31,7 +34,7 @@ const CustomButtonWrapper = styled(Box)`
   return (
     <StyledHeader>
       <Toolbar style={{ minHeight: 56 }}>
-        <StyledBox>
+        <StyledBox to='/'>
           <img src={logoURL} alt="logo" style={{ width: "75px" }} />
           <Box style={{ display: "flex" }}>
             <SubHeading>
