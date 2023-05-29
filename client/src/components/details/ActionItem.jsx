@@ -3,7 +3,7 @@
 import { Button, Box, styled } from '@mui/material';
 import { ShoppingCart as Cart, FlashOn as Flash } from '@mui/icons-material';
 
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 // import { payUsingPaytm } from '../../service/api';
 // import { post } from '../../utils/paytm';
 
@@ -32,7 +32,7 @@ const StyledButton = styled(Button)`
 `;
 
 const ActionItem = ({ product }) => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     // const { id } = product;
         
     // const [quantity, setQuantity] = useState(1);
