@@ -33,7 +33,7 @@ const StyledButton = styled(Button)`
 
 const ActionItem = ({ product }) => {
     const navigate = useNavigate();
-    const { id } = product;
+    // const { id } = product;
         
     // const [quantity, setQuantity] = useState(1);
     // const dispatch = useDispatch();
@@ -47,10 +47,10 @@ const ActionItem = ({ product }) => {
     //     post(information);
     // }
 
-    const addItemToCart = () => {
-        // dispatch(addToCart(id, quantity));
-        navigate('/cart');
-    }
+    // const addItemToCart = () => {
+    //     // dispatch(addToCart(id, quantity));
+    //     navigate('/cart');
+    // }
 
     return (
         <LeftContainer>
