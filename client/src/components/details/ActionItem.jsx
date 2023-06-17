@@ -14,22 +14,32 @@ const LeftContainer = styled(Box)(({ theme }) => ({
     minWidth: '40%',
     padding: '40px 0 0 80px',
     [theme.breakpoints.down('md')]: {
-        padding: '20px 40px'
+        padding: '20px 15px',
+        textAlign:'center',
     }
 }))
 
-const Image = styled('img')({
+const Image = styled('img')(({ theme }) => ({
     padding: '15px 20px',
     border: '1px solid #f0f0f0',
-    width: '95%'
-});
+    width: '90%',
+    [theme.breakpoints.down('md')]: {
+        border: 'none',
+    }
+}))
 
-const StyledButton = styled(Button)`
-    width: 46%;
-    border-radius: 2px;
-    height: 50px;
-    color: #FFF;
-`;
+const StyledButton = styled(Button)(({ theme }) => ({
+    width: '46%',
+    borderRadius: '2px',
+    height: '50px',
+    color: '#FFF',
+    marginTop:'18px',
+    [theme.breakpoints.down('md')]: {
+        width: '45%',
+        height: '44px',
+        fontSize : '0.8rem'
+    }
+}))
 
 const ActionItem = ({ product }) => {
     // const navigate = useNavigate();
@@ -55,7 +65,7 @@ const ActionItem = ({ product }) => {
     return (
         <LeftContainer>
             <Image src={product.detailUrl} /><br />
-            <StyledButton  style={{marginRight: 10, background: '#ff9f00'}} variant="contained"><Cart />Add to Cart</StyledButton>
+            <StyledButton  style={{marginRight: 15, background: '#ff9f00'}} variant="contained"><Cart />Add to Cart</StyledButton>
             <StyledButton style={{background: '#fb641b'}} variant="contained"><Flash /> Buy Now</StyledButton>
         </LeftContainer>
     )

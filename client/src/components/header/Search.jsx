@@ -1,17 +1,23 @@
 import React from "react";
-import { Box, InputBase, styled } from "@mui/material";
+import { Box, InputBase, styled,   createTheme, useMediaQuery } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-const SearchBox = styled(Box)`
-  background: #fff;
-  width: 38%;
-  height: 36px;
-  border-radius: 2px;
-  margin-left: 10px;
-  display: flex;
+const SearchBox = styled(Box)(({ theme }) => ({
+  background: "#fff",
+  width: "38%",
+  height: "36px",
+  borderRadius: "2px",
+  marginLeft: "10px",
+  display: "flex",
+  [theme.breakpoints.down("md")]: {
+    position: "absolute",
+    left : 0,
+    right : 0,
+    width: "94vw",
+    margin: "100px auto 0 auto",
+  },
+}));
 
-  //   box-shadow : #000  1px 1px 1px ;
-`;
 const InputSearchBox = styled(InputBase)`
   padding-left: 17px;
   width: 100%;
@@ -30,13 +36,17 @@ const SearchIconWrapper = styled(SearchIcon)`
 `;
 
 const Search = () => {
+  const theme = createTheme();
+  const isMobileView = useMediaQuery(theme.breakpoints.down("md"));
   // -------RETURN----------------
   return (
     <SearchBox>
       <InputSearchBox placeholder="Search for products, brands and more" />
-      <SearchIconWrapper>
-        <SearchIcon style={{ color: "#2874f0" }} />
-      </SearchIconWrapper>
+      {isMobileView ? null : (
+        <SearchIconWrapper>
+          <SearchIcon style={{ color: "#2874f0" }} />
+        </SearchIconWrapper>
+      )}
     </SearchBox>
   );
 };
