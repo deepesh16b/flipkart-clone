@@ -5,6 +5,7 @@ import {
   Box,
   Button,
   Dialog,
+  Divider,
   TextField,
   Typography,
   createTheme,
@@ -19,7 +20,7 @@ const Component = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     height: "60vh",
     width: "100%",
-    paddingTop: "40px",
+    padding: "10px 0",
   },
 }));
 const Image = styled(Box)`
@@ -155,8 +156,10 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
               </Typography>
             </Image>
           )}
-
           <Wrapper>
+          {isMobileView ? (
+            <><Typography style={{fontSize:'1.5rem', marginBottom :'30px',fontWeight:600, color:"#272727"}}>Signup</Typography></>
+          ) : null}
             <TextField
               variant="standard"
               label="Enter Name"
@@ -216,6 +219,9 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
             </Image>
           )}
           <Wrapper>
+          {isMobileView ? (
+            <><Typography style={{fontSize:'1.7rem', marginBottom :'30px',fontWeight:600, color:"#272727"}}>Login</Typography></>
+          ) : null}
             <TextField
               variant="standard"
               label="Enter Email"
@@ -238,12 +244,12 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
               and <Span>Privacy Policy.</Span>
             </Typography>
             <LoginButton onClick={loginUser}>Login</LoginButton>
-            <Typography
+            {/* <Typography
               style={{ textAlign: "center", padding: "8px 0", color: "grey" }}
             >
               or
-            </Typography>
-            <OtpButton style={{ textTransform: "none" }}>Request OTP</OtpButton>
+            </Typography> */}
+            {/* <OtpButton style={{ textTransform: "none" }}>Request OTP</OtpButton> */}
             <Typography
               style={{
                 fontSize: 13,
