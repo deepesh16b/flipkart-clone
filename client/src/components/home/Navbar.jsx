@@ -16,7 +16,7 @@ const Component = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   textAlign: "center",
   [theme.breakpoints.down("md")]: {
-    padding: "12px 10px 12px 10px",
+    padding: "0 10px 5px 10px ",
     overflow: "scroll",
     marginTop: "116px",
   },
