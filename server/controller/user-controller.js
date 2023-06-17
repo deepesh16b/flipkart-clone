@@ -2,16 +2,20 @@ import User from "../model/user-schema.js";
 
 export const userLogIn = async (request, response) => {
   try {
+    console.log(request.body);
     let user = await User.findOne({
       email: request.body.email,
       password: request.body.password,
     });
     if (user) {
+      console.log('user found in db');
       return response.status(200).json({ data: user });
     } else {
+      console.log('user NOT found in db');
       return response.status(401).json("Invalid Login");
     }
   } catch (error) {
+    console.log('Error found in db while checking login');
     response.status(500).json("Error: ", error.message);
   }
 };

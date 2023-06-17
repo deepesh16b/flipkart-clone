@@ -31,7 +31,7 @@ const Wrapper = styled(Box)(({ theme }) => ({
 }));
 const CartBox = styled(Box)(({ theme }) => ({
   display: "flex",
-  // [theme.breakpoints.down("md")]: {},
+  [theme.breakpoints.down("md")]: {paddingRight:"15px"},
 }));
 const LoginButton = styled(Button)(({ theme }) => ({
   background: "#fff",
@@ -52,7 +52,7 @@ const LoginButton = styled(Button)(({ theme }) => ({
     variant: "text",
     backgroundColor: " #2874f0",
     color: "#fff",
-    padding: " 4px 15px",
+    padding: " 4px 10px",
     paddingRight : 0,
     // position: "absolute",
     // left: "auto",

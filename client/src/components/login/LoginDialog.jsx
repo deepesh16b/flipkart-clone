@@ -64,7 +64,13 @@ const LoginButton = styled(Button)`
     opacity: 0.95;
   }
 `;
-
+const Error = styled(Typography)`
+  color: red;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 0;
+  margin: 11px 0 18px 0;
+`;
 const LoginDialog = ({ loginOpen, setLoginOpen }) => {
   const { setAccount } = useContext(LoginContext);
   const signUpInitialValues = {
@@ -106,33 +112,27 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
   const onSignup = async () => {
     let response = await authenticateSignup(newUserData);
     if (!response) {
-      console.log("null response login dialog ");
+      console.log("null response signup dialog ");
       return;
     }
-    console.log("got response in login dialog");
+    console.log("got response in signup dialog");
     handleDialogOnClose();
-    setAccount(newUserData.name);
+    setAccount(newUserData.name.split(' ')[0]);
+  };
+  const loginUser = async () => {
+    let response = await authenticateLogin(loginUserData);
+    if (response.status === 200) {
+      handleDialogOnClose();
+      setAccount(response.data.data.name.split(' ')[0]);
+    } else {
+      console.log("no user");
+      setError(true);
+    }
   };
   const onValueChange = (e) => {
     setLoginUserData({ ...loginUserData, [e.target.name]: e.target.value });
   };
-  const loginUser = async () => {
-    let response = await authenticateLogin(newUserData);
-    if (response.status === 200) {
-      handleDialogOnClose();
-      setAccount(response.data.data.name);
-    } else {
-      setError(true);
-      console.log("no user");
-    }
-  };
-  const Error = styled(Typography)`
-    color: red;
-    font-size: 11px;
-    font-weight: 500;
-    line-height: 0;
-    margin: 11px 0 18px 0;
-  `;
+
   const theme = createTheme();
   const isMobileView = useMediaQuery(theme.breakpoints.down("md"));
   return (
@@ -156,9 +156,20 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
             </Image>
           )}
           <Wrapper>
-          {isMobileView ? (
-            <><Typography style={{fontSize:'1.5rem', marginBottom :'30px',fontWeight:600, color:"#272727"}}>Signup</Typography></>
-          ) : null}
+            {isMobileView ? (
+              <>
+                <Typography
+                  style={{
+                    fontSize: "1.5rem",
+                    marginBottom: "30px",
+                    fontWeight: 600,
+                    color: "#272727",
+                  }}
+                >
+                  Signup
+                </Typography>
+              </>
+            ) : null}
             <TextField
               variant="standard"
               label="Enter Name"
@@ -218,9 +229,20 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
             </Image>
           )}
           <Wrapper>
-          {isMobileView ? (
-            <><Typography style={{fontSize:'1.7rem', marginBottom :'30px',fontWeight:600, color:"#272727"}}>Login</Typography></>
-          ) : null}
+            {isMobileView ? (
+              <>
+                <Typography
+                  style={{
+                    fontSize: "1.7rem",
+                    marginBottom: "30px",
+                    fontWeight: 600,
+                    color: "#272727",
+                  }}
+                >
+                  Login
+                </Typography>
+              </>
+            ) : null}
             <TextField
               variant="standard"
               label="Enter Email"
