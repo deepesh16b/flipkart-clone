@@ -17,7 +17,7 @@ const Component = styled(Box)(({ theme }) => ({
   height: "74vh",
   width: "90vh",
   [theme.breakpoints.down("md")]: {
-    height: "60vh",
+    height: "70vh",
     width: "100%",
     padding: "10px 0",
   },
