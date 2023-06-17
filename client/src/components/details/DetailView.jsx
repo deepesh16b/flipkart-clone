@@ -9,10 +9,13 @@ import ActionItem from "./ActionItem";
 const fassured =
   "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
 
-const Component = styled(Box)`
-  margin-top: 55px;
-  background: #f2f2f2;
-`;
+const Component = styled(Box)(({ theme }) => ({
+  marginTop: "55px",
+  background: "#f2f2f2",
+  [theme.breakpoints.down("md")]: {
+    marginTop: "104px",
+  },
+}));
 
 const Container = styled(Grid)(({ theme }) => ({
   background: "#FFFFFF",
@@ -22,13 +25,17 @@ const Container = styled(Grid)(({ theme }) => ({
   },
 }));
 
-const RightContainer = styled(Grid)`
-  margin-top: 50px;
-  padding : 0 50px;
-  & > p {
-    margin-top: 10px;
-  }
-`;
+const RightContainer = styled(Grid)(({ theme }) => ({
+  marginTop: " 50px",
+  padding: "0 50px",
+  "& > p": {
+    marginTop: "10px",
+  },
+  [theme.breakpoints.down("md")]: {
+    marginTop: "10px",
+    padding: "0 20px",
+  },
+}));
 
 export const DetailView = () => {
   const dispatch = useDispatch();
@@ -42,7 +49,16 @@ export const DetailView = () => {
     <Component>
       <Box></Box>
       {loading ? (
-        <p style={{margin : "100px", fontSize : "25px", color : "#2874f0", textAlign : "center"}}>Loading...</p>
+        <p
+          style={{
+            margin: "100px",
+            fontSize: "25px",
+            color: "#2874f0",
+            textAlign: "center",
+          }}
+        >
+          Loading...
+        </p>
       ) : (
         product &&
         Object.keys(product).length && (

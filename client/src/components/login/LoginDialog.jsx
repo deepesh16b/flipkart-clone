@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import {authenticateSignup, authenticateLogin} from "../../services/api";
+import { authenticateSignup, authenticateLogin } from "../../services/api";
 import { LoginContext } from "../../contexts/LoginProvider";
 import {
   Box,
@@ -7,14 +7,21 @@ import {
   Dialog,
   TextField,
   Typography,
+  createTheme,
   styled,
+  useMediaQuery,
 } from "@mui/material";
 
-const Component = styled(Box)`
-  display: flex;
-  height: 74vh;
-  width: 90vh;
-`;
+const Component = styled(Box)(({ theme }) => ({
+  display: "flex",
+  height: "74vh",
+  width: "90vh",
+  [theme.breakpoints.down("md")]: {
+    height: "60vh",
+    width: "100%",
+    paddingTop: "40px",
+  },
+}));
 const Image = styled(Box)`
   background: #2874f0
     url(https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png)
@@ -71,7 +78,7 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
     password: "",
   };
   const [error, setError] = useState(false);
-  const [loginUserData, setLoginUserData ] = useState(loginInitialValues);
+  const [loginUserData, setLoginUserData] = useState(loginInitialValues);
   const [newUserData, setNewUserData] = useState(signUpInitialValues);
   const user = {
     new: {
@@ -106,28 +113,28 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
     handleDialogOnClose();
     setAccount(newUserData.name);
   };
-  const onValueChange = (e)=>{
-    setLoginUserData({...loginUserData, [e.target.name] : e.target.value})
-  }
-  const loginUser = async ()=>{
+  const onValueChange = (e) => {
+    setLoginUserData({ ...loginUserData, [e.target.name]: e.target.value });
+  };
+  const loginUser = async () => {
     let response = await authenticateLogin(newUserData);
     if (response.status === 200) {
       handleDialogOnClose();
       setAccount(response.data.data.name);
-    }
-    else{
+    } else {
       setError(true);
       console.log("no user");
     }
-    
-  }
+  };
   const Error = styled(Typography)`
-  color : red;
-  font-size : 11px;
-  font-weight : 500;
-  line-height : 0;
-  margin : 11px 0 18px 0;
+    color: red;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 0;
+    margin: 11px 0 18px 0;
   `;
+  const theme = createTheme();
+  const isMobileView = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Dialog
       open={loginOpen}
@@ -138,14 +145,17 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
       {isNewUser.name === "new" ? (
         // ====================NEW USER=================================
         <Component>
-          <Image>
-            <Typography variant="h5" style={{ marginTop: "45px" }}>
-              {isNewUser.heading}
-            </Typography>
-            <Typography style={{ marginTop: 20, color: "#dbdbdb" }}>
-              {isNewUser.subheading}
-            </Typography>
-          </Image>
+          {isMobileView ? null : (
+            <Image>
+              <Typography variant="h5" style={{ marginTop: "45px" }}>
+                {isNewUser.heading}
+              </Typography>
+              <Typography style={{ marginTop: 20, color: "#dbdbdb" }}>
+                {isNewUser.subheading}
+              </Typography>
+            </Image>
+          )}
+
           <Wrapper>
             <TextField
               variant="standard"
@@ -195,14 +205,16 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
       ) : (
         // ====================EXISTING USER=================================
         <Component>
-          <Image>
-            <Typography variant="h5" style={{ marginTop: "45px" }}>
-              {isNewUser.heading}
-            </Typography>
-            <Typography style={{ marginTop: 20, color: "#dbdbdb" }}>
-              {isNewUser.subheading}
-            </Typography>
-          </Image>
+          {isMobileView ? null : (
+            <Image>
+              <Typography variant="h5" style={{ marginTop: "45px" }}>
+                {isNewUser.heading}
+              </Typography>
+              <Typography style={{ marginTop: 20, color: "#dbdbdb" }}>
+                {isNewUser.subheading}
+              </Typography>
+            </Image>
+          )}
           <Wrapper>
             <TextField
               variant="standard"
@@ -211,7 +223,7 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
               name="email"
               onChange={(e) => onValueChange(e)}
             ></TextField>
-            {error && <Error >* Please enter valid email or password</Error>}
+            {error && <Error>* Please enter valid email or password</Error>}
             <TextField
               style={{ width: "100%", marginBottom: "12px" }}
               variant="standard"

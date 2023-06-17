@@ -8,10 +8,13 @@ import { Slide } from "./Slide";
 import { MidSlide } from "./MidSlide";
 import { MidSection } from "./MidSection";
 
-const Container = styled(Box)`
-  padding: 15px 10px;
-  background: #f1f3f6;
-`;
+const Container = styled(Box)(({ theme }) => ({
+  padding:' 15px 10px',
+  background: '#f1f3f6',
+  [theme.breakpoints.down('md')] : {
+    padding:' 8px 5px',
+  }
+}));
 const Home = () => {
   const { products } = useSelector((state) => state.getProducts);
   console.log(products);

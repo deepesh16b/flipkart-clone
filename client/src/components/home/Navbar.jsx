@@ -18,6 +18,7 @@ const Component = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     padding: "12px 10px 12px 10px",
     overflow: "scroll",
+    marginTop: "116px",
   },
 }));
 
