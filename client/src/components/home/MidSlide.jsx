@@ -24,7 +24,8 @@ const RightComponent = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const MidSlide = ({ products }) => {
+export const MidSlide = ({ loading, products }) => {
+ 
   const theme = createTheme();
   const adURL =
     "https://rukminim1.flixcart.com/flap/464/708/image/633789f7def60050.jpg?q=70";
@@ -33,7 +34,7 @@ export const MidSlide = ({ products }) => {
     <ThemeProvider theme={theme}>
       <Component>
         <LeftComponent>
-          <Slide products={products} title="Deals of the Day" timer={true} />
+          <Slide loading={loading}  products={products} title="Deals of the Day" timer={true} />
         </LeftComponent>
         <RightComponent>
           <img src={adURL} style={{ width: 217 }} alt="ad" />

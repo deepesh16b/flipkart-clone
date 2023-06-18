@@ -16,7 +16,7 @@ const Container = styled(Box)(({ theme }) => ({
   }
 }));
 const Home = () => {
-  const { products } = useSelector((state) => state.getProducts);
+  const { loading,products } = useSelector((state) => state.getProducts);
   console.log(products);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -27,12 +27,12 @@ const Home = () => {
       <Navbar />
       <Container>
         <Banner />
-        <MidSlide products={products} />
+        <MidSlide loading={loading} products={products} />
         <MidSection />
-        <Slide products={products} title="Trending Offers" timer={false} />
-        <Slide products={products} title="Recommended Items" timer={false} />
-        <Slide products={products} title="Discounts for You" timer={false} />
-        <Slide products={products} title="Season's top picks" timer={false} />
+        <Slide loading={loading} products={products} title="Trending Offers" timer={false} />
+        <Slide loading={loading} products={products} title="Recommended Items" timer={false} />
+        <Slide loading={loading} products={products} title="Discounts for You" timer={false} />
+        <Slide loading={loading} products={products} title="Season's top picks" timer={false} />
       </Container>
     </>
   );

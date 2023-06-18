@@ -51,13 +51,14 @@ export const DetailView = () => {
       {loading ? (
         <p
           style={{
-            margin: "100px",
+            margin: "200px 0",
             fontSize: "25px",
             color: "#2874f0",
             textAlign: "center",
+            background : '#fff'
           }}
         >
-          Loading...
+          <img style={{width:'200px'}} src="/loading.gif" alt="loading"/>
         </p>
       ) : (
         product &&

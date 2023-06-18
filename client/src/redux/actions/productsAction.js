@@ -10,6 +10,7 @@ const url = "https://flipkart-backend-lf47.onrender.com";
 // getProducts fun() calling a thunk middleware()
 export const getProducts = () => async (dispatch) => {
   try {
+    dispatch({ type: actionTypes.GET_PRODUCT_REQUEST});
     const { data } = await axios.get(`${url}/products`);
     dispatch({ type: actionTypes.GET_PRODUCT_SUCCESS, payload: data });
   } catch (error) {

@@ -101,15 +101,25 @@ const Image = styled("img")(({ theme }) => ({
     objectFit: "cover",
   },
 }));
-function shuffleArray(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+function shuffleArray(array) {
+  if (!array || array.length === 0) {
+    return [];
   }
+
+  const shuffledArray = [...array];
+
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+
+  return shuffledArray;
 }
 
-export const Slide = ({ products, title, timer }) => {
-  shuffleArray(products);
+
+export const Slide = ({ loading, products, title, timer }) => {
+  
+  const shuffledProducts  = shuffleArray(products);
   const rendered = ({ hours, minutes, seconds }) => {
     return (
       <CountdownText variant="span">
@@ -122,7 +132,7 @@ export const Slide = ({ products, title, timer }) => {
   return (
     <Component>
       <Deals>
-        <Heading style={{}}>{title}</Heading>
+        <Heading >{title}</Heading>
         {timer && (
           <Timer>
             <TimerImg style={{}} src={timerURL} alt="" />
@@ -148,20 +158,37 @@ export const Slide = ({ products, title, timer }) => {
         autoPlay={false}
         autoPlaySpeed={4000}
       >
-        {products.map((product) => (
-          <Link to={`product/${product.id}`} style={{textDecoration : 'none', color : 'inherit'}}>
-            <Item>
-              <Image src={product.url} alt="product" />
-              <Text style={{ color: "#212121", fontWeight: 600 }}>
-                {product.title.shortTitle}
-              </Text>
-              <Text style={{ color: "green" }}>{product.discount}</Text>
-              <Text style={{ color: "#212121", opacity: "0.6" }}>
-                {product.tagline}
-              </Text>
-            </Item>
-          </Link>
-        ))}
+        {loading ? (
+          <p
+            style={{
+              margin: "0",
+              fontSize: "25px",
+              color: "#2874f0",
+              textAlign: "center",
+              background: "#fff",
+            }}
+          >
+            <img style={{ marginLeft:'100px',width: "100px" }} src="/loading.gif" alt="loading" />
+          </p>
+        ) : (
+          shuffledProducts.map((product) => (
+            <Link
+              to={`product/${product.id}`}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <Item>
+                <Image src={product.url} alt="product" />
+                <Text style={{ color: "#212121", fontWeight: 600 }}>
+                  {product.title.shortTitle}
+                </Text>
+                <Text style={{ color: "green" }}>{product.discount}</Text>
+                <Text style={{ color: "#212121", opacity: "0.6" }}>
+                  {product.tagline}
+                </Text>
+              </Item>
+            </Link>
+          ))
+        )}
       </Carousel>
     </Component>
   );

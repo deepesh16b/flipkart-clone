@@ -1,3 +1,4 @@
+export const GET_PRODUCT_REQUEST = "getProductRequest";
 export const GET_PRODUCT_SUCCESS = "getProductSuccess";
 export const GET_PRODUCT_FAIL = "getProductFail";
 
