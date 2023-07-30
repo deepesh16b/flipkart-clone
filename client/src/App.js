@@ -1,4 +1,5 @@
 import "./App.css";
+import Cart from "./components/Cart/Cart";
 import { DetailView } from "./components/details/DetailView";
 import Header from "./components/header/Header";
 import Home from "./components/home/Home";
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<DetailView />} />
+          <Route path= '/cart' element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </LoginProvider>

@@ -12,8 +12,10 @@ const fassured =
 const Component = styled(Box)(({ theme }) => ({
   marginTop: "55px",
   background: "#f2f2f2",
+  padding : '0 80px',
   [theme.breakpoints.down("md")]: {
     marginTop: "104px",
+    padding : '0',
   },
 }));
 

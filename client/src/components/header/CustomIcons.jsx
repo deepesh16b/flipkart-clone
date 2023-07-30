@@ -4,14 +4,16 @@ import {
   Button,
   Typography,
   useMediaQuery,
-  styled,
+  styled,Badge,
   ThemeProvider,
   createTheme,
 } from "@mui/material";
-import { ShoppingCart } from "@mui/icons-material";
+import {  ShoppingCart } from "@mui/icons-material";
 import { LoginContext } from "../../contexts/LoginProvider.jsx";
 import Profile from "./Profile.jsx";
 import LoginDialog from "../login/LoginDialog.jsx";
+import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const Wrapper = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -31,7 +33,7 @@ const Wrapper = styled(Box)(({ theme }) => ({
 }));
 const CartBox = styled(Box)(({ theme }) => ({
   display: "flex",
-  [theme.breakpoints.down("md")]: {paddingRight:"15px"},
+  [theme.breakpoints.down("md")]: { paddingRight: "15px" },
 }));
 const LoginButton = styled(Button)(({ theme }) => ({
   background: "#fff",
@@ -53,7 +55,7 @@ const LoginButton = styled(Button)(({ theme }) => ({
     backgroundColor: " #2874f0",
     color: "#fff",
     padding: " 4px 10px",
-    paddingRight : 0,
+    paddingRight: 0,
     // position: "absolute",
     // left: "auto",
     "&:hover": {
@@ -68,7 +70,7 @@ const LoginButton = styled(Button)(({ theme }) => ({
 const CustomIcons = () => {
   const theme = createTheme();
   const isMobileView = useMediaQuery(theme.breakpoints.down("md"));
-
+  const {cartItems} = useSelector((state)=> state.cart);
   const [loginOpen, setLoginOpen] = useState(false);
   const { account, setAccount } = useContext(LoginContext);
   return (
@@ -89,11 +91,13 @@ const CustomIcons = () => {
             <Typography style={{ marginTop: 3 }}>More</Typography>
           </>
         )}
-
-        <CartBox>
-          <ShoppingCart />
-          {isMobileView ? null : <Typography>Cart</Typography>}
-        </CartBox>
+        <Link to={"/cart"} style={{ color: "inherit", textDecoration: "none" }}>
+          <CartBox>
+            <Badge badgeContent={cartItems?.length} color='primary'>
+            <ShoppingCart /></Badge> 
+            {isMobileView ? null : <Typography style={{marginLeft : '5px'}}> Cart</Typography>}
+          </CartBox>
+        </Link>
         <LoginDialog loginOpen={loginOpen} setLoginOpen={setLoginOpen} />
       </Wrapper>
     </ThemeProvider>

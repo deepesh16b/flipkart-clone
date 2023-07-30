@@ -5,6 +5,7 @@ import "../assets/font.css";
 
 
 const Wrapper = styled(Box)(({ theme }) => ({
+  backgroundColor :' #fff',
   [theme.breakpoints.down("md")]: {
     overflow: "hidden",
   },
