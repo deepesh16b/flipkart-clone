@@ -13,6 +13,7 @@ export const addPaymentGateway = async (request, response) => {
             'CHECKSUMHASH': paytmCheckSum
         };
         response.json(params);
+        response.redirect(`http://localhost:3000/success`)
     } catch (error) {
         console.log(error);
     }
@@ -20,11 +21,11 @@ export const addPaymentGateway = async (request, response) => {
 
 export const paymentResponse = (request, response) => {
     
+    response.redirect(`http://localhost:3000/success`);
     const form = new formidable.IncomingForm();
     const paytmCheckSum = request.body.CHECKSUMHASH;
     delete request.body.CHECKSUMHASH;
 
-    response.redirect(`http://localhost:3000/success`)
     const isVerifySignature = paytmchecksum.verifySignature(request.body, 'bKMfNxPPf_QdZppa', paytmCheckSum);
     if (isVerifySignature) {
         let paytmParams = {};

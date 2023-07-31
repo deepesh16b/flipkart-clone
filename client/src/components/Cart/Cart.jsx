@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Box, Typography, Button, Grid, styled } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../../redux/actions/cartActions";
@@ -68,14 +68,15 @@ const Cart = () => {
   const removeItemFromCart = (id) => {
     dispatch(removeFromCart(id));
   };
-
+const navigate = useNavigate
   const buyNow = async () => {
-      let response = await payUsingPaytm({ amount: 500, email: 'deepeshbhardwaj58@gmail.com'});
-      var information = {
-          action: 'https://securegw-stage.paytm.in/order/process',
-          params: response
-      }
-      post(information);
+    navigate('/success')
+      // let response = await payUsingPaytm({ amount: 500, email: 'deepeshbhardwaj58@gmail.com'});
+      // var information = {
+      //     action: 'https://securegw-stage.paytm.in/order/process',
+      //     params: response
+      // }
+      // post(information);
   }
   
   return (

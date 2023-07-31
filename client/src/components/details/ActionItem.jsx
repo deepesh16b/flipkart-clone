@@ -50,14 +50,14 @@ const ActionItem = ({ product }) => {
         
     const [quantity, setQuantity] = useState(1);
     const dispatch = useDispatch();
-
     const buyNow = async () => {
-        let response = await payUsingPaytm({ amount: 500, email: 'deepeshbhardwaj58@gmail.com'});
-        var information = {
-            action: 'https://securegw-stage.paytm.in/order/process',
-            params: response    
-        }
-        post(information);
+        navigate('/success')
+        // let response = await payUsingPaytm({ amount: 500, email: 'deepeshbhardwaj58@gmail.com'});
+        // var information = {
+        //     action: 'https://securegw-stage.paytm.in/order/process',
+        //     params: response    
+        // }
+        // post(information);
     }
 
     const addItemToCart = () => {
