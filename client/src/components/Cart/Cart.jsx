@@ -3,7 +3,7 @@ import { Box, Typography, Button, Grid, styled } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart, removeFromCart } from "../../redux/actions/cartActions";
+import { addToCart, removeFromCart, resetCart } from "../../redux/actions/cartActions";
 
 import TotalView from "./TotalView";
 import EmptyCart from "./EmptyCart";
@@ -68,8 +68,9 @@ const Cart = () => {
   const removeItemFromCart = (id) => {
     dispatch(removeFromCart(id));
   };
-const navigate = useNavigate
+const navigate = useNavigate()
   const buyNow = async () => {
+    dispatch(resetCart());
     navigate('/success')
       // let response = await payUsingPaytm({ amount: 500, email: 'deepeshbhardwaj58@gmail.com'});
       // var information = {

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 // import { payUsingPaytm } from '../../service/api';
 // import { post } from '../../utils/paytm';
 
-import { addToCart } from '../../redux/actions/cartActions';
+import { addToCart, resetCart } from '../../redux/actions/cartActions';
 import { useDispatch } from 'react-redux';
 import { post } from '../../utils/paytm';
 import { payUsingPaytm } from '../../services/api';
@@ -51,6 +51,7 @@ const ActionItem = ({ product }) => {
     const [quantity, setQuantity] = useState(1);
     const dispatch = useDispatch();
     const buyNow = async () => {
+        dispatch(resetCart());
         navigate('/success')
         // let response = await payUsingPaytm({ amount: 500, email: 'deepeshbhardwaj58@gmail.com'});
         // var information = {
