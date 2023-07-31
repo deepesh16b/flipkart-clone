@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { addToCart } from '../../redux/actions/cartActions';
 import { useDispatch } from 'react-redux';
+import { post } from '../../utils/paytm';
+import { payUsingPaytm } from '../../services/api';
 
 const LeftContainer = styled(Box)(({ theme }) => ({
     minWidth: '40%',
@@ -49,14 +51,14 @@ const ActionItem = ({ product }) => {
     const [quantity, setQuantity] = useState(1);
     const dispatch = useDispatch();
 
-    // const buyNow = async () => {
-    //     let response = await payUsingPaytm({ amount: 500, email: 'codeforinterview01@gmail.com'});
-    //     var information = {
-    //         action: 'https://securegw-stage.paytm.in/order/process',
-    //         params: response    
-    //     }
-    //     post(information);
-    // }
+    const buyNow = async () => {
+        let response = await payUsingPaytm({ amount: 500, email: 'deepeshbhardwaj58@gmail.com'});
+        var information = {
+            action: 'https://securegw-stage.paytm.in/order/process',
+            params: response    
+        }
+        post(information);
+    }
 
     const addItemToCart = () => {
         dispatch(addToCart(id, quantity));
@@ -68,7 +70,7 @@ const ActionItem = ({ product }) => {
             
             <Image src={product.detailUrl} /><br />
             <StyledButton  style={{marginRight: 15, background: '#ff9f00'}} onClick={()=>addItemToCart()} variant="contained"><Cart />Add to Cart</StyledButton>
-            <StyledButton style={{background: '#fb641b'}} variant="contained"><Flash /> Buy Now</StyledButton>
+            <StyledButton style={{background: '#fb641b'}} onClick={()=>buyNow()} variant="contained"><Flash /> Buy Now</StyledButton>
         </LeftContainer>
     )
 }

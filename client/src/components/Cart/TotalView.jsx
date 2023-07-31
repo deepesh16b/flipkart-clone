@@ -75,7 +75,7 @@ const TotalView = ({ cartItems }) => {
                     <Price component="span">₹{price}</Price>
                 </Typography>
                 <Typography>Discount
-                    <Price component="span">-₹{discount}</Price>
+                    <Price component="span">- ₹{discount}</Price>
                 </Typography>
                 <Typography>Delivery Charges
                     <Price component="span">₹40</Price>

@@ -8,6 +8,8 @@ import { addToCart, removeFromCart } from "../../redux/actions/cartActions";
 import TotalView from "./TotalView";
 import EmptyCart from "./EmptyCart";
 import CartItem from "./CartItem";
+import { post } from "../../utils/paytm";
+import { payUsingPaytm } from "../../services/api";
 
 // import { post } from '../../utils/paytm';
 // import { payUsingPaytm } from '../../service/api';
@@ -67,14 +69,14 @@ const Cart = () => {
     dispatch(removeFromCart(id));
   };
 
-  // const buyNow = async () => {
-  //     let response = await payUsingPaytm({ amount: 500, email: 'kunaltyagi@gmail.com'});
-  //     var information = {
-  //         action: 'https://securegw-stage.paytm.in/order/process',
-  //         params: response
-  //     }
-  //     post(information);
-  // }
+  const buyNow = async () => {
+      let response = await payUsingPaytm({ amount: 500, email: 'deepeshbhardwaj58@gmail.com'});
+      var information = {
+          action: 'https://securegw-stage.paytm.in/order/process',
+          params: response
+      }
+      post(information);
+  }
   
   return (
     <>
@@ -90,7 +92,7 @@ const Cart = () => {
               <CartItem item={item} removeItemFromCart={removeItemFromCart} />
             ))}
             <BottomWrapper>
-              <StyledButton variant="contained">Place Order</StyledButton>
+              <StyledButton variant="contained" onClick={()=> buyNow()}>Place Order</StyledButton>
             </BottomWrapper>
           </LeftComponent>
           <Grid item lg={3} md={3} sm={12} xs={12}>
