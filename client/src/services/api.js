@@ -1,7 +1,6 @@
 import axios from 'axios';
-// const URL =  "https://flipkart-backend-lf47.onrender.com" ;
-const URL = "http://localhost:8000";
-// 'https://clever-underwear-toad.cyclic.app/' || 
+const URL =  "https://flipkart-backend-lf47.onrender.com" ;
+// const URL = "http://localhost:8000";
 
 export const authenticateSignup = async (userData)=>{
     try{
