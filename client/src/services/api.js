@@ -1,14 +1,15 @@
 import axios from 'axios';
 // const URL =  "https://flipkart-backend-lf47.onrender.com" ;
-// const URL = "http://localhost:8000";
-const URL =  "https://flipkart-clone-psi.vercel.app";
+const URL = "http://localhost:8000";
+// const URL =  "https://flipkart-clone-psi.vercel.app";
 
 export const authenticateSignup = async (userData)=>{
     try{
-        console.log(userData);
+        console.log('api.js: ', userData);
         return await axios.post(`${URL}/signup`, userData);
     }catch(error){
-        console.log('error while calling signup api ',error);
+        console.log('error while calling signup api',error);
+        return error.response;
     }
 };
 

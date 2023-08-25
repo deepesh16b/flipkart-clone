@@ -76,7 +76,6 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
   const signUpInitialValues = {
     name: "",
     email: "",
-    mobile: "",
     password: "",
   };
   const loginInitialValues = {
@@ -84,8 +83,11 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
     password: "",
   };
   const [error, setError] = useState(false);
+  
   const [loginUserData, setLoginUserData] = useState(loginInitialValues);
   const [newUserData, setNewUserData] = useState(signUpInitialValues);
+
+
   const user = {
     new: {
       name: "new",
@@ -104,34 +106,39 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
     setNewUserData({ ...newUserData, [e.target.name]: e.target.value });
     console.log(newUserData);
   };
-  const handleDialogOnClose = () => {
-    setLoginOpen(false);
-    setIsNewUser(user.existing);
-    setError(false);
+  const onValueChange = (e) => {
+    setLoginUserData({ ...loginUserData, [e.target.name]: e.target.value });
   };
+  
   const onSignup = async () => {
     let response = await authenticateSignup(newUserData);
-    if (!response) {
-      console.log("null response signup dialog ");
+
+    if (response.status === 200) {
+      console.log("got response in signup dialog");
+      handleDialogOnClose();
+      setAccount(newUserData.name.split(" ")[0]);
+    } else {
+      console.log(response);
+      alert("User already exist! Try to Login.");
       return;
     }
-    console.log("got response in signup dialog");
-    handleDialogOnClose();
-    setAccount(newUserData.name.split(' ')[0]);
   };
   const loginUser = async () => {
     let response = await authenticateLogin(loginUserData);
     if (response.status === 200) {
       handleDialogOnClose();
-      setAccount(response.data.data.name.split(' ')[0]);
+      setAccount(response.data.data.name.split(" ")[0]);
     } else {
       console.log("no user");
       setError(true);
     }
   };
-  const onValueChange = (e) => {
-    setLoginUserData({ ...loginUserData, [e.target.name]: e.target.value });
+  const handleDialogOnClose = () => {
+    setLoginOpen(false);
+    setIsNewUser(user.existing);
+    setError(false);
   };
+  
 
   const theme = createTheme();
   const isMobileView = useMediaQuery(theme.breakpoints.down("md"));
@@ -175,6 +182,7 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
               label="Enter Name"
               style={{ width: "100%", marginBottom: "12px" }}
               name="name"
+              value={newUserData.name}
               onChange={(e) => onChangeUserData(e)}
             ></TextField>
             <TextField
@@ -183,19 +191,16 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
               label="Enter Email"
               name="email"
               onChange={(e) => onChangeUserData(e)}
+              value={newUserData.email}
             ></TextField>
-            <TextField
-              style={{ width: "100%", marginBottom: "12px" }}
-              variant="standard"
-              label="Enter Mobile number"
-              name="mobile"
-              onChange={(e) => onChangeUserData(e)}
-            ></TextField>
+
             <TextField
               style={{ width: "100%", marginBottom: "12px" }}
               variant="standard"
               label="Enter password"
               name="password"
+              type="password"
+              value={newUserData.password}
               onChange={(e) => onChangeUserData(e)}
             ></TextField>
 
@@ -249,6 +254,7 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
               style={{ width: "100%", marginBottom: "12px" }}
               name="email"
               onChange={(e) => onValueChange(e)}
+              value={loginUserData.email}
             ></TextField>
             {error && <Error>* Please enter valid email or password</Error>}
             <TextField
@@ -256,7 +262,9 @@ const LoginDialog = ({ loginOpen, setLoginOpen }) => {
               variant="standard"
               label="Enter password"
               name="password"
+              type="password"
               onChange={(e) => onValueChange(e)}
+              value={loginUserData.password}
             ></TextField>
             <Typography
               style={{ fontSize: 12, color: "grey", margin: "20px 0" }}
