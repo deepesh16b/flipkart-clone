@@ -46,7 +46,8 @@ const Success = () => {
         <Typography style={{fontSize:19, fontWeight:500, marginBottom : 10}}>Hurray!</Typography>
         <Typography component="span">Your Order is Placed.</Typography>
         <br />
-        <Typography component="span" >Reference no: {ref}</Typography>
+        <Typography component="span">Order ID: <span style={{color:'#0dc043'}}>{ref}</span></Typography>
+        <br />
         <Link to={"/"} style={{ color: "inherit", textDecoration: "none" }}>
           <StyledButton variant="contained">Continue Shopping</StyledButton>
         </Link>

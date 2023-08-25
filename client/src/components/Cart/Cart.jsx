@@ -89,7 +89,7 @@ const Cart = () => {
       currency: "INR",
       name: "Flipkart",
       description: "Complete the Payment",
-      image: './favicon.png',
+      image: 'https://backend.insideiim.com/wp-content/uploads/2015/08/Flipkart-logo-insideiim.png',
       order_id: order.id,
       callback_url: `${URL}/paymentVerification`,
       prefill: {
@@ -101,7 +101,7 @@ const Cart = () => {
         address: "Razorpay Corporate Office",
       },
       theme: {
-        color: "#3399cc",
+        color: "#2874f0",
       },
     };
 
