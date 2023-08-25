@@ -1,18 +1,24 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Box, Typography, Button, Grid, styled } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
+import {
+  // useNavigate,
+  useParams,
+} from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart, removeFromCart, resetCart } from "../../redux/actions/cartActions";
+import {
+  addToCart,
+  removeFromCart,
+  // resetCart,
+} from "../../redux/actions/cartActions";
 
 import TotalView from "./TotalView";
 import EmptyCart from "./EmptyCart";
 import CartItem from "./CartItem";
-import { post } from "../../utils/paytm";
-import { payUsingPaytm } from "../../services/api";
-
-// import { post } from '../../utils/paytm';
-// import { payUsingPaytm } from '../../service/api';
+// import { post } from "../../utils/paytm";
+// import { payUsingPaytm } from "../../services/api";
+import axios from "axios";
+import { URL } from "../serverLink";
 
 const Component = styled(Grid)(({ theme }) => ({
   padding: "30px 160px",
@@ -57,6 +63,7 @@ const StyledButton = styled(Button)`
 const Cart = () => {
   const cartDetails = useSelector((state) => state.cart);
   const { cartItems } = cartDetails;
+  const [amount, setAmount] = useState(100);
   const { id } = useParams();
 
   const dispatch = useDispatch();
@@ -68,21 +75,42 @@ const Cart = () => {
   const removeItemFromCart = (id) => {
     dispatch(removeFromCart(id));
   };
-const navigate = useNavigate()
+  // const navigate = useNavigate();
+
   const buyNow = async () => {
-    dispatch(resetCart());
-    navigate('/success')
-      // let response = await payUsingPaytm({ amount: 500, email: 'deepeshbhardwaj58@gmail.com'});
-      // var information = {
-      //     action: 'https://securegw-stage.paytm.in/order/process',
-      //     params: response
-      // }
-      // post(information);
-  }
-  
+    const {data : {key}} = await axios.get(`${URL}/getKey`);
+    const { data:{order} } = await axios.post(`${URL}/checkout`, {
+      amount,
+    });
+    // console.log(data);
+    const options = {
+      key, 
+      amount: order.amount, 
+      currency: "INR",
+      name: "Flipkart",
+      description: "Complete the Payment",
+      image: './favicon.png',
+      order_id: order.id,
+      callback_url: `${URL}/paymentVerification`,
+      prefill: {
+        name: "Deepesh Bhardwaj",
+        email: "deepeshbhardwaj58@example.com",
+        contact: "9876543210",
+      },
+      notes: {
+        address: "Razorpay Corporate Office",
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+
+    var razor = new window.Razorpay(options);
+      razor.open();
+  };
   return (
     <>
-      { cartItems.length ? (
+      {cartItems.length ? (
         <Component container>
           <LeftComponent item lg={9} md={9} sm={12} xs={12}>
             <Header>
@@ -91,14 +119,20 @@ const navigate = useNavigate()
               </Typography>
             </Header>
             {cartItems.map((item) => (
-              <CartItem item={item} removeItemFromCart={removeItemFromCart} />
+              <CartItem
+                item={item}
+                removeItemFromCart={removeItemFromCart}
+                key={item.id}
+              />
             ))}
             <BottomWrapper>
-              <StyledButton variant="contained" onClick={()=> buyNow()}>Place Order</StyledButton>
+              <StyledButton variant="contained" onClick={() => buyNow()}>
+                Place Order
+              </StyledButton>
             </BottomWrapper>
           </LeftComponent>
           <Grid item lg={3} md={3} sm={12} xs={12}>
-            <TotalView cartItems={cartItems} />
+            <TotalView cartItems={cartItems} setAmount={setAmount} />
           </Grid>
         </Component>
       ) : (

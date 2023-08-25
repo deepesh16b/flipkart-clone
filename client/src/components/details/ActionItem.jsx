@@ -9,8 +9,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { addToCart, resetCart } from '../../redux/actions/cartActions';
 import { useDispatch } from 'react-redux';
-import { post } from '../../utils/paytm';
-import { payUsingPaytm } from '../../services/api';
 
 const LeftContainer = styled(Box)(({ theme }) => ({
     minWidth: '40%',

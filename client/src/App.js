@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<DetailView />} />
           <Route path= '/cart' element={<Cart />} />
-          <Route path= '/success' element={<Success />} />
+          <Route path= '/paymentsuccess' element={<Success />} />
         </Routes>
       </BrowserRouter>
     </LoginProvider>

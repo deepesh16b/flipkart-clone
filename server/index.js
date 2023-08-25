@@ -16,6 +16,8 @@ const user = process.env.USER_NAME;
 const password = process.env.USER_PASSWORD;
 
 Connection(user, password);
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 
 app.listen(PORT || process.env.PORT , () => console.log(`Server started at port ${PORT}!`));
 
@@ -26,17 +28,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use('/', Route);
 
-
-export let paytmMerchantkey = process.env.PAYTM_MERCHANT_KEY;
-export let paytmParams = {};
-paytmParams['MID'] = process.env.PAYTM_MID,
-paytmParams['WEBSITE'] = process.env.PAYTM_WEBSITE,
-paytmParams['CHANNEL_ID'] = process.env.PAYTM_CHANNEL_ID,
-paytmParams['INDUSTRY_TYPE_ID'] = process.env.PAYTM_INDUSTRY_TYPE,
-paytmParams['ORDER_ID'] = uuid(),
-paytmParams['CUST_ID'] = process.env.PAYTM_CUST_ID,
-paytmParams['TXN_AMOUNT'] = '100',
-paytmParams['CALLBACK_URL'] = 'http://localhost:8000/callback'
-// paytmParams['EMAIL'] = 'kunaltyagi@gmail.com'
-paytmParams['EMAIL'] = 'deepeshbhardwaj58@gmail.com'
-paytmParams['MOBILE_NO'] = '1234567852'
+app.get('/getKey', (req, res)=> res.status(200).json({key: process.env.RAZORPAY_API_KEY}));

@@ -1,71 +1,45 @@
-import paytmchecksum from 'paytmchecksum'
-import { paytmParams, paytmMerchantkey } from '../index.js';
-import formidable from 'formidable';
-import https from 'https';
+import crypto from "crypto";
 
+const hmac_sha256 = (data, secret) => {
+  const hmac = crypto.createHmac("sha256", secret);
+  hmac.update(data);
+  return hmac.digest("hex");
+};
 
+import dotenv from "dotenv";
+dotenv.config();
+import { instance } from "./instance.js";
 
-export const addPaymentGateway = async (request, response) => {
-    const paytmCheckSum = await paytmchecksum.generateSignature(paytmParams, paytmMerchantkey);
-    try {
-        const params = {
-            ...paytmParams,
-            'CHECKSUMHASH': paytmCheckSum
-        };
-        response.json(params);
-        response.redirect(`http://localhost:3000/success`)
-    } catch (error) {
-        console.log(error);
-    }
-}
+export const checkout = async (req, res) => {
+  var options = {
+    amount: Number(req.body.amount * 100), // amount in the smallest currency unit
+    currency: "INR",
+  };
+  const order = await instance.orders.create(options);
+  console.log(order);
+  res.status(200).json({
+    success: true,
+    order,
+  });
+};
 
-export const paymentResponse = (request, response) => {
+export const paymentVerification = async (req, res) => {
+  const {razorpay_payment_id,razorpay_order_id,razorpay_signature} = req.body;
+  const order_id = razorpay_order_id;
+
+  const generated_signature = hmac_sha256(order_id + "|" + razorpay_payment_id, process.env.RAZORPAY_API_SECRET);
+
+  if (generated_signature == razorpay_signature) {
     
-    response.redirect(`http://localhost:3000/success`);
-    const form = new formidable.IncomingForm();
-    const paytmCheckSum = request.body.CHECKSUMHASH;
-    delete request.body.CHECKSUMHASH;
 
-    const isVerifySignature = paytmchecksum.verifySignature(request.body, 'bKMfNxPPf_QdZppa', paytmCheckSum);
-    if (isVerifySignature) {
-        let paytmParams = {};
-        paytmParams["MID"] = request.body.MID;
-        paytmParams["ORDERID"] = request.body.ORDERID;
+    res.redirect(`${process.env.FRONTEND_URL}/paymentsuccess?reference=${razorpay_payment_id}`)
+  }
+  else{
+    res.status(400).json({
+      success: false,
+    });
+  }
 
-        paytmchecksum.generateSignature(paytmParams, 'bKMfNxPPf_QdZppa').then(function (checksum) {
 
-            paytmParams["CHECKSUMHASH"] = checksum;
-
-            const post_data = JSON.stringify(paytmParams);
-
-            const options = {
-                hostname: 'securegw-stage.paytm.in',
-                port: 443,
-                path: '/order/status',
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Content-Length': post_data.length
-                }
-            };
-
-            let res = "";
-            const post_req = https.request(options, function (post_res) {
-                post_res.on('data', function (chunk) {
-                    res += chunk;
-                });
-
-                post_res.on('end', function () {
-                    let result = JSON.parse(res);
-                    console.log(result);
-                    response.redirect(`http://localhost:3000/`)
-                });
-            });
-            post_req.write(post_data);
-            post_req.end();
-        });
-    } else {
-        console.log("Checksum Mismatched");
-        response.redirect(`http://localhost:3000/success`)
-    }
-}
+  
+};

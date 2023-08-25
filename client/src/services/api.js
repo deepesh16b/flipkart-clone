@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { URL } from '../components/serverLink';
 // const URL =  "https://flipkart-backend-lf47.onrender.com" ;
-const URL = "http://localhost:8000";
+// const URL = "http://localhost:8000";
 // const URL =  "https://flipkart-clone-psi.vercel.app";
 
 export const authenticateSignup = async (userData)=>{
@@ -23,12 +24,12 @@ export const authenticateLogin = async (userData)=>{
     }
 };
 
-export  const payUsingPaytm = async (data) => {
-    try {
-        let response = await axios.post(`${URL}/payment`, data);
-        return response.data;
-    } catch (error) {
+// export  const checkoutFun = async (amount) => {
+//     try {
+//         let response = await axios.post(`${URL}/payment`, data);
+//         return response.data;
+//     } catch (error) {
         
-        console.log('Error', error);
-    }
-}
+//         console.log('Error', error);
+//     }
+// }
