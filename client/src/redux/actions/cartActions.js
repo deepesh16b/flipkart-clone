@@ -1,6 +1,7 @@
 import * as actionTypes from "../constants/cartConstants";
 import axios from "axios";
-const url = "https://flipkart-backend-lf47.onrender.com";
+// const url = "https://flipkart-backend-lf47.onrender.com";
+const url =  "https://flipkart-clone-psi.vercel.app/";
 // const url = "http://localhost:8000";
 export const addToCart = (id, quantity) => async (dispatch) => {
   try {
