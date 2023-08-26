@@ -17,18 +17,9 @@ const password = process.env.USER_PASSWORD;
 
 Connection(user, password);
 
-// Allow requests from specific origins
-const allowedOrigins = [
-  "https://flipkart3.netlify.app", // Add more origins if needed
-];
+app.use(cors());
 
-app.use(
-  cors({
-    origin: allowedOrigins,
-  })
-);
-
-app.use(function (req, res, next) {
+app.use(function (req, res) {
   res.header("Access-Control-Allow-Origin", "*");
 
   res.header(
@@ -41,7 +32,6 @@ app.use(function (req, res, next) {
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
 
-  next();
 });
 app.use(express.urlencoded({ extended: true }));
 
