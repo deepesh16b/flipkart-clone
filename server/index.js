@@ -13,10 +13,10 @@ const app = express();
 const PORT = 8000;
 
 const user = process.env.USER_NAME;
+app.use(cors());
 const password = process.env.USER_PASSWORD;
 
 Connection(user, password);
-app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 app.listen(PORT || process.env.PORT , () => console.log(`Server started at port ${PORT}!`));
@@ -25,7 +25,6 @@ DefaultData();
 
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
 app.use('/', Route);
 
 app.get('/getKey', (req, res)=> res.status(200).json({key: process.env.RAZORPAY_API_KEY}));
