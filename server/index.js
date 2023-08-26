@@ -10,7 +10,10 @@ import Route from "./routes/route.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: ["https://flipkart3.netlify.app"],
+  }));
+  
 app.use(express.urlencoded({ extended: true }));
 const PORT = 8000;
 
