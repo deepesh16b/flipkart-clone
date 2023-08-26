@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as actionTypes from "../constants/actionTypes";
-import { URL } from "../../components/serverLink";
+import { URL } from "./../../serverLink";
 
 // const url = 'http://localhost:8000';
 // const url =  "https://flipkart-clone-psi.vercel.app";

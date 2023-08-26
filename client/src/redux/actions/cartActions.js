@@ -1,6 +1,7 @@
-import { URL } from "../../components/serverLink";
+
 import * as actionTypes from "../constants/cartConstants";
 import axios from "axios";
+import { URL } from './../../serverLink';
 // const url = "https://flipkart-backend-lf47.onrender.com";
 // const url =  "https://flipkart-clone-psi.vercel.app";
 // const url = "http://localhost:8000";

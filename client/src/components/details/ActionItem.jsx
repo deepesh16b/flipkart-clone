@@ -7,10 +7,10 @@ import { useNavigate } from "react-router-dom";
 // import { payUsingPaytm } from '../../service/api';
 // import { post } from '../../utils/paytm';
 
-import { addToCart, resetCart } from "../../redux/actions/cartActions";
+import { addToCart} from "../../redux/actions/cartActions";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import { URL } from "../serverLink";
+import { URL } from "../../serverLink";
 
 const LeftContainer = styled(Box)(({ theme }) => ({
   minWidth: "40%",

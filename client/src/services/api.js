@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { URL } from '../components/serverLink';
+import { URL } from '../serverLink';
 // const URL =  "https://flipkart-backend-lf47.onrender.com" ;
 // const URL = "http://localhost:8000";
 // const URL =  "https://flipkart-clone-psi.vercel.app";

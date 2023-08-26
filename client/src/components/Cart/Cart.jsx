@@ -1,3 +1,4 @@
+import { URL } from "../../serverLink";
 import { useEffect, useState } from "react";
 import { Box, Typography, Button, Grid, styled } from "@mui/material";
 import {
@@ -18,7 +19,6 @@ import CartItem from "./CartItem";
 // import { post } from "../../utils/paytm";
 // import { payUsingPaytm } from "../../services/api";
 import axios from "axios";
-import { URL } from "../serverLink";
 
 const Component = styled(Grid)(({ theme }) => ({
   padding: "30px 160px",
