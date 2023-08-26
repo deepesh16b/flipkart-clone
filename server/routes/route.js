@@ -23,7 +23,7 @@ router.get("/product/:id", getProductById);
 
 router.post(
   "/checkout",
-  cors({ origin: ["https://flipkart3.netlify.app/cart"] }),
+  cors({ origin: ["https://flipkart3.netlify.app"] }),
   checkout
 );
 router.post("/paymentVerification", paymentVerification);
