@@ -78,10 +78,20 @@ const Cart = () => {
   // const navigate = useNavigate();
 
   const buyNow = async () => {
-    const {data : {key}} = await axios.get(`${URL}/getKey`);
+    const {data : {key}} = await axios.get(`${URL}/getKey`, {
+      responseType: "json",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
     console.log("api key seccess in frobntend");
     const { data:{order} } = await axios.post(`${URL}/checkout`, {
       amount,
+    }, {
+      responseType: "json",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
     });
     console.log("order created seccess in frobntend");
     // console.log(data);
@@ -111,6 +121,7 @@ const Cart = () => {
     var razor = new window.Razorpay(options);
       razor.open();
   };
+
   return (
     <>
       {cartItems.length ? (
