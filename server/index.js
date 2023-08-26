@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: ["https://flipkart3.vercel.app"],
+    origin: "*",
   })
 );
 
