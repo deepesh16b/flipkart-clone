@@ -11,7 +11,7 @@ import {
   checkout,
   paymentVerification,
 } from "../controller/payment-controller.js";
-import cors from "cors";
+// import cors from "cors";
 
 const router = express.Router();
 
