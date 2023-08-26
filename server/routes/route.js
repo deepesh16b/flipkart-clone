@@ -21,11 +21,7 @@ router.post("/login", userLogIn);
 router.get("/products", getProductsData);
 router.get("/product/:id", getProductById);
 
-router.post(
-  "/checkout",
-  cors({ origin: ["https://flipkart3.netlify.app"] }),
-  checkout
-);
+router.post("/checkout",checkout);
 router.post("/paymentVerification", paymentVerification);
 
 export default router;

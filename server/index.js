@@ -37,5 +37,4 @@ app.use("/", Route);
 app.get("/getKey", (req, res) => {
   console.log("getapikey successsss");
   res.status(200).json({ key: process.env.RAZORPAY_API_KEY });
-//   res.header("Access-Control-Allow-Origin", "https://flipkart3.netlify.app");
 });
