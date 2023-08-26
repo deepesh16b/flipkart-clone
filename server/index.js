@@ -10,10 +10,12 @@ import Route from "./routes/route.js";
 dotenv.config();
 
 const app = express();
-app.use(cors({
+app.use(
+  cors({
     origin: process.env.FRONTEND_URL,
-  }));
-  
+  })
+);
+
 app.use(express.urlencoded({ extended: true }));
 const PORT = 8000;
 
@@ -21,7 +23,6 @@ const user = process.env.USER_NAME;
 const password = process.env.USER_PASSWORD;
 
 Connection(user, password);
-
 
 app.listen(PORT || process.env.PORT, () =>
   console.log(`Server started at port ${PORT}!`)
@@ -33,9 +34,8 @@ app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", Route);
 
-app.get("/getKey", (req, res) =>
-
-  {console.log("getapikey successsss");
+app.get("/getKey", (req, res) => {
+  console.log("getapikey successsss");
   res.status(200).json({ key: process.env.RAZORPAY_API_KEY });
-  res.header("Access-Control-Allow-Origin",  process.env.FRONTEND_URL);}
-);
+  res.header("Access-Control-Allow-Origin", process.env.FRONTEND_URL);
+});
