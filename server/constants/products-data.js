@@ -1,7 +1,7 @@
 export const productsData = [
   {
     id: "product1",
-    url: "https://rukminim1.flixcart.com/image/150/150/kapoo7k0/electric-kettle/p/6/s/pigeon-favourite-original-imafs7xhj5uwgrh4.jpeg?q=70",
+    url: "https://rukminim1.flixcart.com/image/250/250/kapoo7k0/electric-kettle/p/6/s/pigeon-favourite-original-imafs7xhj5uwgrh4.jpeg?q=70",
     detailUrl:
       "https://rukminim1.flixcart.com/image/416/416/kapoo7k0/electric-kettle/p/6/s/pigeon-favourite-original-imafs7xhj5uwgrh4.jpeg?q=70",
     title: {
@@ -41,7 +41,7 @@ export const productsData = [
   },
   {
     id: "product3",
-    url: "https://rukminim1.flixcart.com/image/150/150/kohigsw0/resistance-tube/c/s/e/new-adjustable-single-resistance-tube-multicolor-na-ajro-deal-original-imag2xg88mhmwxz5.jpeg?q=70",
+    url: "https://rukminim1.flixcart.com/image/350/350/kohigsw0/resistance-tube/c/s/e/new-adjustable-single-resistance-tube-multicolor-na-ajro-deal-original-imag2xg88mhmwxz5.jpeg?q=70",
     detailUrl:
       "https://rukminim1.flixcart.com/image/416/416/kohigsw0/resistance-tube/c/s/e/new-adjustable-single-resistance-tube-multicolor-na-ajro-deal-original-imag2xg88mhmwxz5.jpeg?q=70",
     title: {
@@ -101,7 +101,7 @@ export const productsData = [
   },
   {
     id: "product6",
-    url: "https://rukminim1.flixcart.com/image/150/150/kk01pjk0/fan/d/d/l/tiktik-quiet-portable-table-fan-zigma-original-imafzg7ftzuckpad.jpeg?q=70",
+    url: "https://rukminim1.flixcart.com/image/250/250/kk01pjk0/fan/d/d/l/tiktik-quiet-portable-table-fan-zigma-original-imafzg7ftzuckpad.jpeg?q=70",
     detailUrl:
       "https://rukminim1.flixcart.com/image/416/416/kk01pjk0/fan/d/d/l/tiktik-quiet-portable-table-fan-zigma-original-imafzg7ftzuckpad.jpeg?q=70",
     title: {
@@ -122,7 +122,7 @@ export const productsData = [
   },
   {
     id: "product7",
-    url: "https://rukminim1.flixcart.com/image/150/150/kcgk1ow0/headphone/n/u/a/235v2-fast-charging-boat-original-imaftk6us4af7bca.jpeg?q=70",
+    url: "https://rukminim1.flixcart.com/image/250/250/kcgk1ow0/headphone/n/u/a/235v2-fast-charging-boat-original-imaftk6us4af7bca.jpeg?q=70",
     detailUrl:
       "https://rukminim1.flixcart.com/image/416/416/kcgk1ow0/headphone/n/u/a/235v2-fast-charging-boat-original-imaftk6us4af7bca.jpeg?q=70",
     title: {
@@ -143,9 +143,9 @@ export const productsData = [
   },
   {
     id: "product8",
-    url: "https://rukminim1.flixcart.com/image/200/200/k59xci80/watch/t/p/9/premium-luxury-business-casual-trendy-water-resistant-original-imafnzmembfxdyhv.jpeg?q=70",
+    url: "https://rukminim1.flixcart.com/image/300/300/k59xci80/watch/t/p/9/premium-luxury-business-casual-trendy-water-resistant-original-imafnzmembfxdyhv.jpeg?q=70",
     detailUrl:
-      "https://rukminim1.flixcart.com/image/200/200/k59xci80/watch/t/p/9/premium-luxury-business-casual-trendy-water-resistant-original-imafnzmembfxdyhv.jpeg?q=70",
+      "https://rukminim1.flixcart.com/image/500/500/k59xci80/watch/t/p/9/premium-luxury-business-casual-trendy-water-resistant-original-imafnzmembfxdyhv.jpeg?q=70",
     title: {
       shortTitle: "Watches",
       longTitle:
@@ -166,7 +166,7 @@ export const productsData = [
     id: "product9",
     url: "https://rukminim1.flixcart.com/image/200/200/kz5vwy80/helmet/o/4/k/-original-imagb8azfdthjhqr.jpeg?q=70",
     detailUrl:
-      "https://rukminim1.flixcart.com/image/200/200/kz5vwy80/helmet/o/4/k/-original-imagb8azfdthjhqr.jpeg?q=70",
+      "https://rukminim1.flixcart.com/image/300/300/kz5vwy80/helmet/o/4/k/-original-imagb8azfdthjhqr.jpeg?q=70",
     title: {
       shortTitle: "Rider Helmets",
       longTitle:
@@ -187,7 +187,7 @@ export const productsData = [
     id: "product10",
     url: "https://rukminim1.flixcart.com/image/416/416/xif0q/mobile/l/8/r/-original-imaghxemnnnkd8bg.jpeg?q=70",
     detailUrl:
-      "https://rukminim1.flixcart.com/image/416/416/xif0q/mobile/l/8/r/-original-imaghxemnnnkd8bg.jpeg?q=70",
+      "https://rukminim1.flixcart.com/image/616/616/xif0q/mobile/l/8/r/-original-imaghxemnnnkd8bg.jpeg?q=70",
     title: {
       shortTitle: "iPhone 14 pro",
       longTitle: "APPLE iPhone 14 Pro (Deep Purple, 128 GB) ",
@@ -207,7 +207,7 @@ export const productsData = [
     id: "product11",
     url: "https://rukminim1.flixcart.com/image/312/312/xif0q/computer/v/k/d/14iau7-gaming-laptop-lenovo-original-imaghnq4zafgebtu.jpeg?q=70",
     detailUrl:
-      "https://rukminim1.flixcart.com/image/312/312/xif0q/computer/v/k/d/14iau7-gaming-laptop-lenovo-original-imaghnq4zafgebtu.jpeg?q=70",
+      "https://rukminim1.flixcart.com/image/412/412/xif0q/computer/v/k/d/14iau7-gaming-laptop-lenovo-original-imaghnq4zafgebtu.jpeg?q=70",
     title: {
       shortTitle: "Lenovo Gaming Laptop",
       longTitle:
@@ -247,7 +247,7 @@ export const productsData = [
     id: "product13",
     url: "https://rukminim1.flixcart.com/image/416/416/xif0q/mobile/2/s/7/-original-imagmg6gktts6sfy.jpeg?q=70",
     detailUrl:
-      "https://rukminim1.flixcart.com/image/416/416/xif0q/mobile/2/s/7/-original-imagmg6gktts6sfy.jpeg?q=70",
+      "https://rukminim1.flixcart.com/image/516/516/xif0q/mobile/2/s/7/-original-imagmg6gktts6sfy.jpeg?q=70",
     title: {
       shortTitle: "SAMSUNG S23 Ultra",
       longTitle: "SAMSUNG Galaxy S23 Ultra 5G (Green, 256 GB)  (12 GB RAM) ",

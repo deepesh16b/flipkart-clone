@@ -11,10 +11,14 @@ export const navData = [
 ];
 
 export const bannerData = [
-    { id: 1, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/d117a62eb5fbb8e1.jpg?q=50' },
-    { id: 2, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/57267a180af306fe.jpg?q=50' },
-    { id: 3, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/ae9966569097a8b7.jpg?q=50' },
-    { id: 4, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/f6202f13b6f89b03.jpg?q=50' }
+    { id: 1, url: 'https://rukminim2.flixcart.com/fk-p-flap/3376/560/image/e5a898f6a95d2172.png?q=50' },
+    { id: 2, url: 'https://rukminim2.flixcart.com/fk-p-flap/3350/560/image/a1d93b6bc446790d.jpg?q=50' },
+    { id: 3, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/f6202f13b6f89b03.jpg?q=50' },
+    { id: 4, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/ae9966569097a8b7.jpg?q=50' },
+    { id: 5, url: 'https://rukminim2.flixcart.com/fk-p-flap/3350/560/image/270d3c2c94309b55.png?q=50' },
+    { id: 6, url: 'https://rukminim2.flixcart.com/fk-p-flap/3300/560/image/a80893b88f1b9368.png?q=50' },
+    { id: 7, url: 'https://rukminim2.flixcart.com/fk-p-flap/3300/560/image/3f678a35c5eebd8f.png?q=50' }
+    
 ]
 
 export const dealData = [
