@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import cors from "cors";
-import { v4 as uuid } from "uuid";
+// import { v4 as uuid } from "uuid";
 import Connection from "./database/db.js";
 import DefaultData from "./default.js";
 import Route from "./routes/route.js";
@@ -11,7 +11,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-    origin: ["https://flipkart3.netlify.app"],
+    origin: process.env.FRONTEND_URL,
   }));
   
 app.use(express.urlencoded({ extended: true }));
@@ -37,5 +37,5 @@ app.get("/getKey", (req, res) =>
 
   {console.log("getapikey successsss");
   res.status(200).json({ key: process.env.RAZORPAY_API_KEY });
-  res.header("Access-Control-Allow-Origin", "https://flipkart3.netlify.app");}
+  res.header("Access-Control-Allow-Origin",  process.env.FRONTEND_URL);}
 );
