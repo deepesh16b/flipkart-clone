@@ -10,6 +10,8 @@ import Route from "./routes/route.js";
 dotenv.config();
 
 const app = express();
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 const PORT = 8000;
 
 const user = process.env.USER_NAME;
@@ -17,7 +19,6 @@ const password = process.env.USER_PASSWORD;
 
 Connection(user, password);
 
-app.use(cors());
 
 // app.use(function (req, res) {
 //   res.header("Access-Control-Allow-Origin", "*");
@@ -33,7 +34,6 @@ app.use(cors());
 //   );
 
 // });
-app.use(express.urlencoded({ extended: true }));
 
 app.listen(PORT || process.env.PORT, () =>
   console.log(`Server started at port ${PORT}!`)
