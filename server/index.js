@@ -13,10 +13,19 @@ const app = express();
 const PORT = 8000;
 
 const user = process.env.USER_NAME;
-app.use(cors());
 const password = process.env.USER_PASSWORD;
 
 Connection(user, password);
+
+// Allow requests from specific origins
+const allowedOrigins = [
+  "https://flipkart3.netlify.app", // Add more origins if needed
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+}));
+
 app.use(express.urlencoded({ extended: true }));
 
 app.listen(PORT || process.env.PORT , () => console.log(`Server started at port ${PORT}!`));
