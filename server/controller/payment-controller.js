@@ -21,6 +21,7 @@ export const checkout = async (req, res) => {
     success: true,
     order,
   });
+  res.header("Access-Control-Allow-Origin", "https://flipkart3.netlify.app");
 };
 
 export const paymentVerification = async (req, res) => {
