@@ -5,7 +5,7 @@ import express from 'express';
 import { userLogIn, userSignup } from "../controller/user-controller.js";
 import { getProductById, getProductsData } from './../controller/product-controller.js';
 import { checkout, paymentVerification } from '../controller/payment-controller.js';
-import { cors } from 'cors';
+import cors from 'cors';
 
 const router = express.Router();
 
