@@ -79,9 +79,11 @@ const Cart = () => {
 
   const buyNow = async () => {
     const {data : {key}} = await axios.get(`${URL}/getKey`);
+    console.log("api key seccess in frobntend");
     const { data:{order} } = await axios.post(`${URL}/checkout`, {
       amount,
     });
+    console.log("order created seccess in frobntend");
     // console.log(data);
     const options = {
       key, 
@@ -104,6 +106,7 @@ const Cart = () => {
         color: "#2874f0",
       },
     };
+    console.log("razorpay seccess in frobntend");
 
     var razor = new window.Razorpay(options);
       razor.open();
