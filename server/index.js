@@ -20,11 +20,6 @@ const password = process.env.USER_PASSWORD;
 Connection(user, password);
 
 
-app.use(function (req, res) {
-  res.header("Access-Control-Allow-Origin", "https://flipkart3.netlify.app");
-
-});
-
 app.listen(PORT || process.env.PORT, () =>
   console.log(`Server started at port ${PORT}!`)
 );
