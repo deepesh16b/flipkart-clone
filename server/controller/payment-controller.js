@@ -13,7 +13,7 @@ const hmac_sha256 = (data, secret) => {
 import { instance } from "./instance.js";
 
 export const checkout = async (req, res) => {
-  res.header("Access-Control-Allow-Origin", process.env.FRONTEND_URL);
+  res.header("Access-Control-Allow-Origin", "https://flipkart3.netlify.app");
   var options = {
     amount: Number(req.body.amount * 100), // amount in the smallest currency unit
     currency: "INR",

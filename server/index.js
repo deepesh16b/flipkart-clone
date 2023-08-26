@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: ["https://flipkart3.netlify.app"],
   })
 );
 
@@ -37,5 +37,5 @@ app.use("/", Route);
 app.get("/getKey", (req, res) => {
   console.log("getapikey successsss");
   res.status(200).json({ key: process.env.RAZORPAY_API_KEY });
-  res.header("Access-Control-Allow-Origin", process.env.FRONTEND_URL);
+  res.header("Access-Control-Allow-Origin", "https://flipkart3.netlify.app");
 });

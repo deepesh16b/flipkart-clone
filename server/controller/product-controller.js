@@ -4,7 +4,7 @@ dotenv.config();
 import Product from './../model/product-schema.js';
 
 export const getProductsData = async (request, response)=>{
-    response.header("Access-Control-Allow-Origin", process.env.FRONTEND_URL);
+    response.header("Access-Control-Allow-Origin", "https://flipkart3.netlify.app");
     try{
         const products = await Product.find({});
         response.status(200).json(products);
